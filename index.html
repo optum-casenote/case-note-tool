@@ -1,4 +1,203 @@
-<div class="header">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CASE NOTE</title>
+
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>CASE NOTE</h1>
+
+            <div class="clocks">
+                <div>
+                    PH Time
+                    <br>
+                    <span id="phTime"></span>
+                </div>
+
+                <div>
+                    EST Time
+                    <br>
+                    <span id="estTime"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button id="noteTabBtn" class="active">
+                Note
+            </button>
+
+            <button id="historyTabBtn">
+                History
+            </button>
+        </div>
+
+        <!-- NOTE TAB -->
+
+        <div id="noteTab">
+
+            <div class="card">
+
+                <label>Spoke With *</label>
+                <select id="spokeWith">
+                    <option value="">Select</option>
+                    <option>Patient</option>
+                    <option>Spouse</option>
+                    <option>Child</option>
+                    <option>Sibling</option>
+                    <option>Other</option>
+                </select>
+
+                <div id="otherRelationshipContainer" style="display:none;">
+                    <label>Other Relationship</label>
+                    <input type="text" id="otherRelationship">
+                </div>
+
+                <label>Caller's Name *</label>
+                <input type="text" id="callerName">
+
+                <label>MD Office Hours</label>
+                <input type="text" id="mdOfficeHours">
+
+                <label>PUNR *</label>
+                <select id="punr">
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Order Number</label>
+                <input type="number" id="orderNumber">
+
+                <label>Delivery Date *</label>
+                <input type="date" id="deliveryDate">
+
+                <label>Copay / AR Balance *</label>
+                <input type="text" id="copay">
+
+                <label>OBE Needed?</label>
+                <select id="obeNeeded">
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Is There an Active OBE?</label>
+                <select id="activeObe">
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Insurance Under Medicaid *</label>
+                <select id="medicaid">
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Same Address as Previous Order *</label>
+                <select id="sameAddress">
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Same MD on RX?</label>
+                <select id="sameMd">
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Shipping Address *</label>
+                <textarea id="shippingAddress"></textarea>
+
+                <label>Growth Hormone? *</label>
+                <select id="growthHormone">
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Shipping State CO, ID, MN, NV, RI, WV?</label>
+                <select id="specialState">
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Shipping Method *</label>
+                <select id="shippingMethod">
+                    <option value="">Select</option>
+                    <option>Signature Required</option>
+                    <option>No Signature Required</option>
+                    <option>Other</option>
+                </select>
+
+                <div id="otherShippingContainer" style="display:none;">
+                    <label>Specify Shipping Method</label>
+                    <input type="text" id="otherShippingMethod">
+                </div>
+
+                <div class="reminder">
+                    <strong>Shipping Reminder:</strong>
+                    <br><br>
+                    Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.
+                </div>
+
+                <div class="attestation">
+
+                    <input type="checkbox" id="attestation">
+
+                    <label for="attestation">
+                        I attest that I have verified with the patient that there are no
+                        changes to the insurance on file.
+                    </label>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button id="copyNoteBtn" disabled>
+                        Copy Note
+                    </button>
+
+                    <button id="clearBtn">
+                        Clear Form
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- HISTORY TAB -->
+
+        <div id="historyTab" class="hidden">
+            <div id="historyContainer"></div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT FILE -->
+    <script src="script.js"></script>
+
+</body>
+
+</html><div class="header">
     <h1>CASE NOTE</h1>
 
     <div class="clocks">
