@@ -274,15 +274,9 @@ note += `I attest that I have verified with the patient that there are no change
         note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
     }
 
-    note += `\n====================================\n`;
-    note += `SHIPPING REMINDER\n`;
-    note += `====================================\n`;
-    note += `Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
-
-    note += `\n====================================\n`;
-    note += `ATTESTATION\n`;
-    note += `====================================\n`;
-    note += `I attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
+    note += `\n`;
+note += `Shipping Reminder: Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
+note += `I attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
 
     try {
 
