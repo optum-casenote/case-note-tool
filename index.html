@@ -50,8 +50,11 @@
 
         <section id="noteTab" class="card">
 
-            <!-- SPOKE WITH -->
+    <!-- SPOKE WITH + CALLER -->
 
+    <div class="form-row">
+
+        <div class="form-group">
             <label>
                 Spoke With
                 <span class="required">*</span>
@@ -65,36 +68,44 @@
                 <option>Sibling</option>
                 <option>Other</option>
             </select>
+        </div>
 
-            <div id="otherRelationshipContainer" style="display:none; margin-top:10px;">
-                <label>Other Relationship</label>
-                <input type="text" id="otherRelationship">
-            </div>
-
-            <!-- CALLER -->
-
+        <div class="form-group">
             <label>
                 Caller's Name
-                <span class="required"> </span>
-                
-            </label>
-
-           <input type="text" id="callerName">
-
-            <!-- MD HOURS -->
-
-            <label>
-                MD Office Hours
-                <span class="field-note">(If Office-Based)</span>
+                <span class="required">*</span>
             </label>
 
             <input
-    type="text"
-    id="mdOfficeHours"
-    placeholder="e.g. Mon-Fri, 9AM-5PM">
+                type="text"
+                id="callerName"
+                placeholder="Type PT's Complete Name">
+        </div>
 
-            <!-- PUNR -->
+    </div>
 
+    <div id="otherRelationshipContainer" style="display:none;">
+        <label>Other Relationship</label>
+        <input type="text" id="otherRelationship">
+    </div>
+
+    <!-- MD OFFICE HOURS -->
+
+    <label>
+        MD Office Hours
+        <span class="field-note">(If Office-Based)</span>
+    </label>
+
+    <input
+        type="text"
+        id="mdOfficeHours"
+        placeholder="e.g. Mon-Fri, 9AM-5PM">
+
+    <!-- PUNR + ORDER NUMBER -->
+
+    <div class="form-row">
+
+        <div class="form-group">
             <label>
                 PUNR
                 <span class="required">*</span>
@@ -105,27 +116,37 @@
                 <option>Yes</option>
                 <option>No</option>
             </select>
+        </div>
 
-            <!-- ORDER NUMBER -->
-
+        <div class="form-group">
             <label>Order Number</label>
 
             <input
-    type="number"
-    id="orderNumber"
-    placeholder="Enter order number">
+                type="number"
+                id="orderNumber"
+                placeholder="Enter order number">
+        </div>
 
+    </div>
 
-            <!-- DELIVERY DATE -->
+    <!-- DELIVERY DATE + COPAY -->
+
+    <div class="form-row">
+
+        <div class="form-group">
 
             <label>
                 Delivery Date
                 <span class="required">*</span>
             </label>
 
-            <input type="date" id="deliveryDate">
+            <input
+                type="date"
+                id="deliveryDate">
 
-            <!-- COPAY -->
+        </div>
+
+        <div class="form-group">
 
             <label>
                 Copay / AR Balance
@@ -135,9 +156,17 @@
             <input
                 type="text"
                 id="copay"
-                placeholder="$0.00">
+                placeholder="Enter amount or N/A">
 
-            <!-- OBE -->
+        </div>
+
+    </div>
+
+    <!-- OBE ROW -->
+
+    <div class="form-row">
+
+        <div class="form-group">
 
             <label>OBE Needed?</label>
 
@@ -147,7 +176,9 @@
                 <option>No</option>
             </select>
 
-            <!-- ACTIVE OBE -->
+        </div>
+
+        <div class="form-group">
 
             <label>Is There an Active OBE?</label>
 
@@ -157,7 +188,15 @@
                 <option>No</option>
             </select>
 
-            <!-- MEDICAID -->
+        </div>
+
+    </div>
+
+    <!-- MEDICAID -->
+
+    <div class="form-row">
+
+        <div class="form-group">
 
             <label>
                 Is There Insurance Under Medicaid?
@@ -170,7 +209,9 @@
                 <option>No</option>
             </select>
 
-            <!-- SAME ADDRESS -->
+        </div>
+
+        <div class="form-group">
 
             <label>
                 Is the Address the Same as the Previous Order?
@@ -183,7 +224,15 @@
                 <option>No</option>
             </select>
 
-            <!-- SAME MD -->
+        </div>
+
+    </div>
+
+    <!-- SAME MD + GROWTH -->
+
+    <div class="form-row">
+
+        <div class="form-group">
 
             <label>
                 If Shipping to MDO, Is It the Same MD on the Rx?
@@ -195,18 +244,9 @@
                 <option>No</option>
             </select>
 
-            <!-- SHIPPING ADDRESS -->
+        </div>
 
-            <label>
-                Shipping Address
-                <span class="required">*</span>
-            </label>
-
-            <textarea
-    id="shippingAddress"
-    placeholder="Put Complete Address"></textarea> 
-
-            <!-- GROWTH HORMONE -->
+        <div class="form-group">
 
             <label>
                 Is the Medication a Growth Hormone?
@@ -219,7 +259,15 @@
                 <option>No</option>
             </select>
 
-            <!-- RESTRICTED STATES -->
+        </div>
+
+    </div>
+
+    <!-- SHIPPING -->
+
+    <div class="form-row">
+
+        <div class="form-group">
 
             <label>
                 Is the Shipping State CO, ID, MN, NV, RI, or WV?
@@ -231,7 +279,9 @@
                 <option>No</option>
             </select>
 
-            <!-- SHIPPING METHOD -->
+        </div>
+
+        <div class="form-group">
 
             <label>
                 Shipping Method
@@ -245,58 +295,74 @@
                 <option>Other</option>
             </select>
 
-            <div id="otherShippingContainer" style="display:none; margin-top:10px;">
-                <label>Specify Shipping Method</label>
-                <input type="text" id="otherShippingMethod">
-            </div>
+        </div>
 
-            <!-- REMINDER -->
+    </div>
 
-            <div class="reminder-box">
-                <strong>Shipping Reminder:</strong><br>
-                Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.
-            </div>
+    <div id="otherShippingContainer" style="display:none;">
+        <label>Specify Shipping Method</label>
+        <input type="text" id="otherShippingMethod">
+    </div>
 
-            <!-- ATTESTATION -->
+    <!-- SHIPPING ADDRESS -->
 
-            <div class="attestation">
+    <label>
+        Shipping Address
+        <span class="required">*</span>
+    </label>
 
-                <label>
+    <textarea
+        id="shippingAddress"
+        placeholder="Put Complete Address"></textarea>
 
-                    <input
-                        type="checkbox"
-                        id="attestation">
+    <!-- REMINDER -->
 
-                    I attest that I have verified with the patient that there are no changes to the insurance on file.
+    <div class="reminder-box">
+        <strong>Shipping Reminder:</strong><br>
+        Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.
+    </div>
 
-                </label>
+    <!-- ATTESTATION -->
 
-            </div>
+    <div class="attestation">
 
-            <!-- BUTTONS -->
+        <label>
 
-            <div class="button-row">
+            <input
+                type="checkbox"
+                id="attestation">
 
-                <button
-                    id="copyNoteBtn"
-                    class="btn btn-copy"
-                    disabled>
+            I attest that I have verified with the patient that there are no changes to the insurance on file.
 
-                    Copy Note
+        </label>
 
-                </button>
+    </div>
 
-                <button
-                    id="clearBtn"
-                    class="btn btn-clear">
+    <!-- BUTTONS -->
 
-                    Clear Form
+    <div class="button-row">
 
-                </button>
+        <button
+            id="copyNoteBtn"
+            class="btn btn-copy"
+            disabled>
 
-            </div>
+            Copy Note
 
-        </section>
+        </button>
+
+        <button
+            id="clearBtn"
+            class="btn btn-clear">
+
+            Clear Form
+
+        </button>
+
+    </div>
+
+</section>
+
 
         <!-- HISTORY TAB -->
 
