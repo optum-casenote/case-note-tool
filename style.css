@@ -1,200 +1,381 @@
+/* ==========================================
+   CASE NOTE
+   Modern Professional Pharmacy Dashboard
+========================================== */
+
 :root{
---bg:#FCF9EA;
---orange:#FF933E;
---border:#E7E7E7;
+    --bg:#FCF9EA;
+    --card:#ffffff;
+    --primary:#FF933E;
+    --primary-hover:#ff8423;
+    --border:#E7E7E7;
+    --text:#2A2A2A;
+    --subtext:#6C6C6C;
+    --success:#E7F8EE;
+    --shadow:0 10px 35px rgba(0,0,0,.06);
 }
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-background:var(--bg);
-padding:25px;
-color:#333;
+    background:var(--bg);
+    font-family:'Segoe UI',sans-serif;
+    color:var(--text);
+    padding:30px;
 }
 
 .app{
-max-width:1100px;
-margin:auto;
+    max-width:1200px;
+    margin:auto;
 }
+
+/* ==========================================
+   HEADER
+========================================== */
 
 .topbar{
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
-margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:25px;
 }
 
-.tabs{
-display:flex;
-gap:10px;
-margin-bottom:15px;
-}
-
-.tab{
-background:white;
-border:1px solid var(--border);
-padding:12px 20px;
-border-radius:14px;
-cursor:pointer;
-font-weight:600;
-}
-
-.tab.active{
-background:var(--orange);
-color:white;
-border:none;
+.left-side{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
 }
 
 h1{
-font-size:42px;
-font-weight:800;
+    font-size:42px;
+    font-weight:800;
+    letter-spacing:-1px;
 }
 
+/* ==========================================
+   TABS
+========================================== */
+
+.tabs{
+    display:flex;
+    gap:10px;
+}
+
+.tab{
+    border:none;
+    background:white;
+    color:#666;
+    padding:12px 24px;
+    border-radius:14px;
+    font-weight:700;
+    cursor:pointer;
+    border:1px solid var(--border);
+    transition:.25s ease;
+}
+
+.tab:hover{
+    transform:translateY(-2px);
+}
+
+.tab.active{
+    background:var(--primary);
+    color:white;
+    border:none;
+    box-shadow:0 8px 22px rgba(255,147,62,.35);
+}
+
+/* ==========================================
+   CLOCKS
+========================================== */
+
 .clock-section{
-display:flex;
-gap:12px;
+    display:flex;
+    gap:12px;
 }
 
 .clock-card{
-background:white;
-padding:15px;
-border-radius:18px;
-border:1px solid var(--border);
-min-width:150px;
-box-shadow:0 8px 20px rgba(0,0,0,.05);
+    background:white;
+    border-radius:18px;
+    border:1px solid var(--border);
+    padding:14px 18px;
+    min-width:170px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    gap:4px;
 }
 
 .clock-card span{
-display:block;
-font-size:12px;
-color:#888;
-margin-bottom:4px;
+    font-size:12px;
+    color:var(--subtext);
 }
+
+.clock-card strong{
+    font-size:17px;
+    font-weight:700;
+}
+
+/* ==========================================
+   MAIN CARD
+========================================== */
 
 .card{
-background:white;
-padding:30px;
-border-radius:24px;
-border:1px solid var(--border);
-box-shadow:0 15px 35px rgba(0,0,0,.05);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:35px;
+    box-shadow:var(--shadow);
 }
+
+/* ==========================================
+   LABELS
+========================================== */
 
 label{
-display:block;
-margin-top:16px;
-margin-bottom:6px;
-font-weight:600;
+    display:block;
+    margin-top:18px;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#333;
 }
 
+/* ==========================================
+   INPUTS
+========================================== */
+
 input,
-select,
-textarea{
-width:100%;
-padding:14px;
-border:1px solid var(--border);
-border-radius:14px;
-font-size:15px;
-background:white;
+textarea,
+select{
+    width:100%;
+    padding:15px 18px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:white;
+    font-size:15px;
+    color:#333;
+    transition:.25s ease;
+}
+
+input:hover,
+textarea:hover,
+select:hover{
+    border-color:#d0d0d0;
 }
 
 input:focus,
-select:focus,
-textarea:focus{
-outline:none;
-border-color:var(--orange);
-box-shadow:0 0 0 4px rgba(255,147,62,.15);
+textarea:focus,
+select:focus{
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(255,147,62,.15);
+}
+
+/* Beautiful dropdown */
+
+select{
+    appearance:none;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+    background-position:right 15px center;
+    background-size:18px;
+    padding-right:45px;
+    cursor:pointer;
 }
 
 textarea{
-min-height:120px;
-resize:vertical;
+    min-height:120px;
+    resize:vertical;
 }
+
+/* ==========================================
+   REMINDER BOX
+========================================== */
 
 .reminder{
-margin-top:20px;
-padding:18px;
-background:#FFF2E6;
-border-left:5px solid var(--orange);
-border-radius:14px;
-font-weight:600;
+    margin-top:25px;
+    background:#FFF3E7;
+    border-left:5px solid var(--primary);
+    border-radius:16px;
+    padding:18px;
+    font-weight:600;
+    color:#9a5400;
+    line-height:1.5;
 }
 
+/* ==========================================
+   CHECKBOX
+========================================== */
+
 .attestation{
-display:flex;
-gap:10px;
-margin-top:20px;
+    margin-top:25px;
+    padding:18px;
+    border-radius:16px;
+    background:#FAFAFA;
+    border:1px solid var(--border);
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
 }
 
 .attestation input{
-width:auto;
-margin-top:5px;
+    width:auto;
+    margin-top:4px;
 }
+
+.attestation label{
+    margin:0;
+    line-height:1.5;
+    font-weight:500;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
 
 .button-group{
-display:flex;
-gap:12px;
-margin-top:25px;
+    display:flex;
+    gap:12px;
+    margin-top:30px;
 }
 
-button{
-cursor:pointer;
+#copyNoteBtn,
+#clearBtn{
+    border:none;
+    padding:15px 26px;
+    border-radius:15px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
 }
 
 #copyNoteBtn{
-background:var(--orange);
-color:white;
-border:none;
-padding:14px 24px;
-border-radius:14px;
-font-weight:700;
+    background:var(--primary);
+    color:white;
+}
+
+#copyNoteBtn:hover{
+    background:var(--primary-hover);
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(255,147,62,.35);
+}
+
+#copyNoteBtn:disabled{
+    background:#bdbdbd;
+    cursor:not-allowed;
+    box-shadow:none;
+    transform:none;
 }
 
 #clearBtn{
-background:#efefef;
-border:none;
-padding:14px 24px;
-border-radius:14px;
-font-weight:700;
+    background:#F0F0F0;
+    color:#444;
 }
 
+#clearBtn:hover{
+    background:#E4E4E4;
+}
+
+/* ==========================================
+   HISTORY TAB
+========================================== */
+
 .history-card{
-background:#fafafa;
-padding:15px;
-border-radius:15px;
-border:1px solid var(--border);
-margin-bottom:15px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:16px;
+    box-shadow:0 5px 14px rgba(0,0,0,.04);
 }
 
 .history-card pre{
-white-space:pre-wrap;
+    white-space:pre-wrap;
+    margin-top:10px;
+    line-height:1.6;
 }
 
-.hidden{
-display:none;
+.history-card small{
+    color:#777;
 }
+
+.date-group{
+    font-size:18px;
+    font-weight:700;
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+/* ==========================================
+   SUCCESS MESSAGE
+========================================== */
+
+.success-message{
+    background:var(--success);
+    border:1px solid #B6E7C2;
+    color:#156c3e;
+    padding:14px;
+    border-radius:14px;
+    margin-top:18px;
+}
+
+/* ==========================================
+   HIDDEN
+========================================== */
+
+.hidden{
+    display:none;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media(max-width:768px){
 
-.topbar{
-flex-direction:column;
-gap:20px;
-}
+    body{
+        padding:15px;
+    }
 
-.clock-section{
-width:100%;
-}
+    .topbar{
+        flex-direction:column;
+        gap:20px;
+    }
 
-.clock-card{
-flex:1;
-}
+    .clock-section{
+        width:100%;
+        flex-direction:column;
+    }
 
-.button-group{
-flex-direction:column;
-}
+    .clock-card{
+        width:100%;
+    }
+
+    h1{
+        font-size:32px;
+    }
+
+    .button-group{
+        flex-direction:column;
+    }
+
+    #copyNoteBtn,
+    #clearBtn{
+        width:100%;
+    }
+
+    .tabs{
+        width:100%;
+    }
+
+    .tab{
+        flex:1;
+    }
 
 }
