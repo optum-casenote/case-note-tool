@@ -203,7 +203,7 @@ note += `Shipping Reminder:\n`;
 note += `Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n\n`;
 
 note += `I attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
-``
+
 
     if (
         shippingMethod.value === "Other" &&
