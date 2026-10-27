@@ -1,4 +1,6 @@
-/* ===== GLOBAL ===== */
+/* ===================================
+   CASE NOTE WEBSITE
+=================================== */
 
 *{
     margin:0;
@@ -7,25 +9,22 @@
 }
 
 body{
-    font-family: "Segoe UI", Arial, sans-serif;
     background:#FCF9EA;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
     color:#333;
     padding:20px;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-}
-
-/* ===== HEADER ===== */
+/* ===================================
+   HEADER
+=================================== */
 
 .header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:20px;
     margin-bottom:25px;
+    flex-wrap:wrap;
 }
 
 .header h1{
@@ -37,31 +36,22 @@ body{
 .clocks{
     display:flex;
     gap:15px;
-    flex-wrap:wrap;
 }
 
-.clock-box{
+.clocks div{
     background:#fff;
-    border:1px solid #e1e1e1;
+    border:1px solid #ddd;
     border-radius:12px;
     padding:10px 15px;
     min-width:140px;
     text-align:center;
-    box-shadow:0 2px 6px rgba(0,0,0,0.05);
-}
-
-.clock-label{
-    font-size:12px;
-    color:#666;
-    margin-bottom:3px;
-}
-
-.clock-time{
-    font-size:15px;
     font-weight:600;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
-/* ===== TABS ===== */
+/* ===================================
+   TABS
+=================================== */
 
 .tabs{
     display:flex;
@@ -72,13 +62,12 @@ body{
 .tabs button{
     border:none;
     background:#FF933E;
-    color:#fff;
+    color:white;
+    padding:12px 24px;
     border-radius:12px;
-    padding:12px 25px;
     cursor:pointer;
-    font-size:15px;
     font-weight:600;
-    transition:.2s;
+    transition:0.3s;
 }
 
 .tabs button:hover{
@@ -89,49 +78,46 @@ body{
     box-shadow:0 3px 10px rgba(0,0,0,.15);
 }
 
-/* ===== FORM CARD ===== */
+/* ===================================
+   FORM CARD
+=================================== */
 
 .card{
-    background:#fff;
-    border:1px solid #e4e4e4;
+    background:white;
+    border:1px solid #ddd;
     border-radius:16px;
     padding:25px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+    box-shadow:0 2px 12px rgba(0,0,0,.06);
 }
 
-.section-title{
-    font-size:18px;
-    font-weight:600;
-    margin-bottom:15px;
-}
-
-/* ===== LABELS ===== */
+/* ===================================
+   FORM ELEMENTS
+=================================== */
 
 label{
     display:block;
     margin-top:15px;
-    margin-bottom:5px;
+    margin-bottom:6px;
     font-weight:600;
 }
-
-/* ===== INPUTS ===== */
 
 input,
 select,
 textarea{
     width:100%;
     padding:12px;
-    border:1px solid #dcdcdc;
+    border:1px solid #ddd;
     border-radius:10px;
     font-size:14px;
-    outline:none;
-    transition:.2s;
+    background:white;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
+    outline:none;
     border-color:#FF933E;
+    box-shadow:0 0 0 3px rgba(255,147,62,.15);
 }
 
 textarea{
@@ -139,31 +125,24 @@ textarea{
     min-height:120px;
 }
 
-/* ===== INFO BOX ===== */
-
-.reminder{
-    margin-top:20px;
-    background:#FFF6D8;
-    border:1px solid #F1D17E;
-    border-radius:12px;
-    padding:15px;
-    font-size:14px;
-    line-height:1.5;
-    font-weight:600;
-}
-
-/* ===== CHECKBOX ===== */
+/* ===================================
+   ATTTESTATION
+=================================== */
 
 .attestation{
-    display:flex;
-    align-items:flex-start;
-    gap:10px;
     margin-top:20px;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    background:#fafafa;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
 }
 
-.attestation input{
+.attestation input[type="checkbox"]{
     width:auto;
-    margin-top:4px;
+    margin-top:3px;
 }
 
 .attestation label{
@@ -172,11 +151,27 @@ textarea{
     line-height:1.5;
 }
 
-/* ===== BUTTONS ===== */
+/* ===================================
+   SHIPPING REMINDER
+=================================== */
+
+.reminder{
+    margin-top:20px;
+    background:#FFF4D6;
+    border:1px solid #FFD27A;
+    border-radius:12px;
+    padding:15px;
+    font-weight:600;
+    color:#7a5400;
+}
+
+/* ===================================
+   BUTTONS
+=================================== */
 
 .buttons{
     display:flex;
-    gap:12px;
+    gap:10px;
     margin-top:25px;
     flex-wrap:wrap;
 }
@@ -184,12 +179,12 @@ textarea{
 .buttons button{
     border:none;
     background:#FF933E;
-    color:#fff;
+    color:white;
+    padding:14px 22px;
     border-radius:12px;
-    padding:14px 20px;
     cursor:pointer;
     font-weight:600;
-    transition:.2s;
+    transition:0.3s;
 }
 
 .buttons button:hover{
@@ -197,7 +192,7 @@ textarea{
 }
 
 .buttons button:disabled{
-    background:#bbb;
+    background:#cccccc;
     cursor:not-allowed;
 }
 
@@ -205,7 +200,13 @@ textarea{
     background:#777;
 }
 
-/* ===== HISTORY ===== */
+#clearBtn:hover{
+    background:#666;
+}
+
+/* ===================================
+   HISTORY
+=================================== */
 
 #historyContainer{
     display:flex;
@@ -213,64 +214,78 @@ textarea{
     gap:15px;
 }
 
-.history-date{
-    margin-top:20px;
-    font-size:18px;
-    font-weight:700;
-}
-
 .history-card{
-    background:#fff;
-    border:1px solid #e1e1e1;
+    background:white;
+    border:1px solid #ddd;
     border-radius:12px;
     padding:15px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
 .history-card small{
     display:block;
-    color:#777;
     margin-bottom:10px;
+    color:#666;
 }
 
 .history-card pre{
     white-space:pre-wrap;
-    word-wrap:break-word;
-    font-family:inherit;
+    word-break:break-word;
+    margin-bottom:12px;
     line-height:1.5;
 }
 
 .history-card button{
-    margin-top:10px;
     border:none;
     background:#FF933E;
-    color:#fff;
-    padding:10px 15px;
+    color:white;
+    padding:10px 16px;
     border-radius:10px;
     cursor:pointer;
 }
 
-/* ===== SUCCESS MESSAGE ===== */
+.history-card button:hover{
+    opacity:.9;
+}
+
+/* ===================================
+   HISTORY DATES
+=================================== */
+
+.history-date{
+    margin-top:20px;
+    margin-bottom:8px;
+    font-size:20px;
+    font-weight:700;
+    color:#333;
+}
+
+/* ===================================
+   SUCCESS ALERT
+=================================== */
 
 .success-message{
-    background:#DFF6E5;
-    border:1px solid #9BD3AC;
-    color:#1D6B37;
+    margin-top:15px;
+    background:#DFF6E3;
+    border:1px solid #8CD6A0;
+    color:#166534;
     padding:12px;
     border-radius:10px;
-    margin-top:15px;
-    font-weight:600;
 }
 
-/* ===== UTILITIES ===== */
+/* ===================================
+   UTILITIES
+=================================== */
 
 .hidden{
-    display:none;
+    display:none !important;
 }
 
-/* ===== MOBILE ===== */
+/* ===================================
+   MOBILE
+=================================== */
 
-@media (max-width:768px){
+@media(max-width:768px){
 
     body{
         padding:12px;
@@ -279,22 +294,15 @@ textarea{
     .header{
         flex-direction:column;
         align-items:flex-start;
+        gap:15px;
     }
 
     .clocks{
         width:100%;
-    }
-
-    .clock-box{
-        flex:1;
-        min-width:120px;
-    }
-
-    .buttons{
         flex-direction:column;
     }
 
-    .buttons button{
+    .clocks div{
         width:100%;
     }
 
@@ -303,6 +311,14 @@ textarea{
     }
 
     .tabs button{
+        width:100%;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .buttons button{
         width:100%;
     }
 
