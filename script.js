@@ -1,103 +1,159 @@
+// ==========================
 // CLOCKS
+// ==========================
 
 function updateClocks() {
 
-document.getElementById("phTime").textContent =
-new Date().toLocaleTimeString("en-US",{
-timeZone:"Asia/Manila"
-});
+    document.getElementById("phTime").textContent =
+        new Date().toLocaleTimeString("en-US", {
+            timeZone: "Asia/Manila"
+        });
 
-document.getElementById("estTime").textContent =
-new Date().toLocaleTimeString("en-US",{
-timeZone:"America/New_York"
-});
+    document.getElementById("estTime").textContent =
+        new Date().toLocaleTimeString("en-US", {
+            timeZone: "America/New_York"
+        });
 
 }
 
 updateClocks();
-setInterval(updateClocks,1000);
+setInterval(updateClocks, 1000);
 
-// TABS
+// ==========================
+// ELEMENTS
+// ==========================
 
-const noteBtn=document.getElementById("noteTabBtn");
-const historyBtn=document.getElementById("historyTabBtn");
+const noteBtn = document.getElementById("noteTabBtn");
+const historyBtn = document.getElementById("historyTabBtn");
 
-const noteTab=document.getElementById("noteTab");
-const historyTab=document.getElementById("historyTab");
+const noteTab = document.getElementById("noteTab");
+const historyTab = document.getElementById("historyTab");
 
-noteBtn.onclick=()=>{
-noteTab.classList.remove("hidden");
-historyTab.classList.add("hidden");
-noteBtn.classList.add("active");
-historyBtn.classList.remove("active");
-};
+const copyBtn = document.getElementById("copyNoteBtn");
 
-historyBtn.onclick=()=>{
-historyTab.classList.remove("hidden");
-noteTab.classList.add("hidden");
-historyBtn.classList.add("active");
-noteBtn.classList.remove("active");
-loadHistory();
-};
+// ==========================
+// TAB SWITCHING
+// ==========================
 
-// Other Relationship
+noteBtn.addEventListener("click", () => {
 
-document.getElementById("spokeWith").addEventListener("change",function(){
+    noteTab.classList.remove("hidden");
+    historyTab.classList.add("hidden");
 
-document.getElementById("otherRelationshipContainer").style.display =
-this.value==="Other" ? "block" : "none";
+    noteBtn.classList.add("active");
+    historyBtn.classList.remove("active");
 
 });
 
-// Other Shipping
+historyBtn.addEventListener("click", () => {
 
-document.getElementById("shippingMethod").addEventListener("change",function(){
+    historyTab.classList.remove("hidden");
+    noteTab.classList.add("hidden");
 
-document.getElementById("otherShippingContainer").style.display =
-this.value==="Other" ? "block" : "none";
+    historyBtn.classList.add("active");
+    noteBtn.classList.remove("active");
 
-});
-
-// Currency
-
-document.getElementById("copay").addEventListener("blur",function(){
-
-let num=this.value.replace(/[^\d.]/g,'');
-
-if(num){
-this.value=Number(num).toLocaleString(
-'en-US',
-{
-style:'currency',
-currency:'USD'
-}
-);
-}
+    loadHistory();
 
 });
 
-// Attestation
+// ==========================
+// OTHER RELATIONSHIP
+// ==========================
 
-document.getElementById("attestation").addEventListener("change",function(){
+document.getElementById("spokeWith")
+.addEventListener("change", function () {
 
-document.getElementById("copyNoteBtn").disabled=!this.checked;
+    document.getElementById(
+        "otherRelationshipContainer"
+    ).style.display =
+        this.value === "Other"
+            ? "block"
+            : "none";
 
 });
 
-// Copy Note
+// ==========================
+// OTHER SHIPPING METHOD
+// ==========================
 
-// Copy Note
+document.getElementById("shippingMethod")
+.addEventListener("change", function () {
 
-document.getElementById("copyNoteBtn").addEventListener("click", async () => {
+    document.getElementById(
+        "otherShippingContainer"
+    ).style.display =
+        this.value === "Other"
+            ? "block"
+            : "none";
 
-    // Required Field Validation
+});
+
+// ==========================
+// CURRENCY FORMAT
+// ==========================
+
+document.getElementById("copay")
+.addEventListener("blur", function () {
+
+    let num = this.value.replace(/[^\d.]/g, "");
+
+    if (!num) return;
+
+    this.value = Number(num).toLocaleString(
+        "en-US",
+        {
+            style: "currency",
+            currency: "USD"
+        }
+    );
+
+});
+
+// ==========================
+// ATTESTATION
+// ==========================
+
+document.getElementById("attestation")
+.addEventListener("change", function () {
+
+    copyBtn.disabled = !this.checked;
+
+});
+
+// ==========================
+// COPY NOTE
+// ==========================
+
+copyBtn.addEventListener("click", async () => {
+
+    const spokeWith = document.getElementById("spokeWith");
+    const otherRelationship = document.getElementById("otherRelationship");
+    const callerName = document.getElementById("callerName");
+    const mdOfficeHours = document.getElementById("mdOfficeHours");
+    const punr = document.getElementById("punr");
+    const orderNumber = document.getElementById("orderNumber");
+    const deliveryDate = document.getElementById("deliveryDate");
+    const copay = document.getElementById("copay");
+    const obeNeeded = document.getElementById("obeNeeded");
+    const activeObe = document.getElementById("activeObe");
+    const medicaid = document.getElementById("medicaid");
+    const sameAddress = document.getElementById("sameAddress");
+    const sameMd = document.getElementById("sameMd");
+    const shippingAddress = document.getElementById("shippingAddress");
+    const growthHormone = document.getElementById("growthHormone");
+    const restrictedState = document.getElementById("restrictedState");
+    const shippingMethod = document.getElementById("shippingMethod");
+    const otherShippingMethod = document.getElementById("otherShippingMethod");
+
+    // Required Validation
 
     if (!spokeWith.value) {
         alert("Spoke With is required.");
         return;
     }
 
-    if (!callerName.value) {
+    if (!callerName.value.trim()) {
         alert("Caller's Name is required.");
         return;
     }
@@ -112,7 +168,7 @@ document.getElementById("copyNoteBtn").addEventListener("click", async () => {
         return;
     }
 
-    if (!copay.value) {
+    if (!copay.value.trim()) {
         alert("Copay / AR Balance is required.");
         return;
     }
@@ -127,7 +183,7 @@ document.getElementById("copyNoteBtn").addEventListener("click", async () => {
         return;
     }
 
-    if (!shippingAddress.value) {
+    if (!shippingAddress.value.trim()) {
         alert("Shipping Address is required.");
         return;
     }
@@ -142,9 +198,15 @@ document.getElementById("copyNoteBtn").addEventListener("click", async () => {
         return;
     }
 
-    let note = "CASE NOTE\n\n";
+    if (
+        shippingMethod.value === "Other" &&
+        !otherShippingMethod.value.trim()
+    ) {
+        alert("Specify Shipping Method.");
+        return;
+    }
 
-    // Always Include Required Fields
+    let note = "CASE NOTE\n\n";
 
     note += `Spoke With: ${spokeWith.value}\n`;
 
@@ -156,8 +218,6 @@ document.getElementById("copyNoteBtn").addEventListener("click", async () => {
     }
 
     note += `Caller's Name: ${callerName.value}\n`;
-
-    // Include ALL Filled Fields
 
     if (mdOfficeHours.value)
         note += `MD Office Hours: ${mdOfficeHours.value}\n`;
@@ -207,15 +267,21 @@ document.getElementById("copyNoteBtn").addEventListener("click", async () => {
         note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
     }
 
-    // Copy To Clipboard
+    try {
 
-    await navigator.clipboard.writeText(note);
+        await navigator.clipboard.writeText(note);
 
-    // Save History
+    } catch {
 
-    let history = JSON.parse(
-        localStorage.getItem("caseNotes") || "[]"
-    );
+        alert("Unable to copy note.");
+        return;
+
+    }
+
+    let history =
+        JSON.parse(
+            localStorage.getItem("caseNotes") || "[]"
+        );
 
     history.unshift({
         date: new Date().toLocaleString(),
@@ -231,50 +297,90 @@ document.getElementById("copyNoteBtn").addEventListener("click", async () => {
 
 });
 
-// History
+// ==========================
+// HISTORY
+// ==========================
 
-function loadHistory(){
+function loadHistory() {
 
-const container=document.getElementById("historyContainer");
+    const container =
+        document.getElementById("historyContainer");
 
-container.innerHTML="";
+    const history =
+        JSON.parse(
+            localStorage.getItem("caseNotes") || "[]"
+        );
 
-const history=
-JSON.parse(localStorage.getItem("caseNotes")||"[]");
+    if (history.length === 0) {
 
-history.forEach(item=>{
+        container.innerHTML = `
+            <div class="empty-history">
+                No saved case notes yet.
+            </div>
+        `;
 
-container.innerHTML+=`
-<div class="history-card">
-<div>${item.date}</div>
-<pre>${item.note}</pre>
-</div>
-`;
+        return;
+    }
 
-});
+    container.innerHTML = "";
+
+    history.forEach(item => {
+
+        container.innerHTML += `
+            <div class="history-card">
+                <div class="history-date">
+                    ${item.date}
+                </div>
+
+                <div class="history-note">
+                    ${item.note.replace(/\n/g, "<br>")}
+                </div>
+            </div>
+        `;
+
+    });
 
 }
 
-// Clear
+// ==========================
+// CLEAR FORM
+// ==========================
 
-document.getElementById("clearBtn").addEventListener("click",()=>{
+document.getElementById("clearBtn")
+.addEventListener("click", () => {
 
-if(!confirm("Clear all fields?")) return;
+    if (!confirm("Clear all fields?")) {
+        return;
+    }
 
-document.querySelectorAll("input, textarea")
-.forEach(el=>{
+    document
+        .querySelectorAll("input, textarea")
+        .forEach(el => {
 
-if(el.type==="checkbox"){
-el.checked=false;
-}else{
-el.value="";
-}
+            if (el.type === "checkbox") {
+                el.checked = false;
+            } else {
+                el.value = "";
+            }
 
-});
+        });
 
-document.querySelectorAll("select")
-.forEach(el=>el.selectedIndex=0);
+    document
+        .querySelectorAll("select")
+        .forEach(el => {
 
-copyNoteBtn.disabled=true;
+            el.selectedIndex = 0;
+
+        });
+
+    document.getElementById(
+        "otherRelationshipContainer"
+    ).style.display = "none";
+
+    document.getElementById(
+        "otherShippingContainer"
+    ).style.display = "none";
+
+    copyBtn.disabled = true;
 
 });
