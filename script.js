@@ -25,10 +25,8 @@ setInterval(updateClocks, 1000);
 
 const noteBtn = document.getElementById("noteTabBtn");
 const historyBtn = document.getElementById("historyTabBtn");
-
 const noteTab = document.getElementById("noteTab");
 const historyTab = document.getElementById("historyTab");
-
 const copyBtn = document.getElementById("copyNoteBtn");
 
 // ==========================
@@ -64,9 +62,7 @@ historyBtn.addEventListener("click", () => {
 document.getElementById("spokeWith")
 .addEventListener("change", function () {
 
-    document.getElementById(
-        "otherRelationshipContainer"
-    ).style.display =
+    document.getElementById("otherRelationshipContainer").style.display =
         this.value === "Other"
             ? "block"
             : "none";
@@ -80,9 +76,7 @@ document.getElementById("spokeWith")
 document.getElementById("shippingMethod")
 .addEventListener("change", function () {
 
-    document.getElementById(
-        "otherShippingContainer"
-    ).style.display =
+    document.getElementById("otherShippingContainer").style.display =
         this.value === "Other"
             ? "block"
             : "none";
@@ -145,8 +139,6 @@ copyBtn.addEventListener("click", async () => {
     const restrictedState = document.getElementById("restrictedState");
     const shippingMethod = document.getElementById("shippingMethod");
     const otherShippingMethod = document.getElementById("otherShippingMethod");
-
-    // Required Validation
 
     if (!spokeWith.value) {
         alert("Spoke With is required.");
@@ -212,7 +204,7 @@ copyBtn.addEventListener("click", async () => {
 
     if (
         spokeWith.value === "Other" &&
-        otherRelationship.value
+        otherRelationship.value.trim()
     ) {
         note += `Other Relationship: ${otherRelationship.value}\n`;
     }
@@ -227,11 +219,8 @@ copyBtn.addEventListener("click", async () => {
     if (orderNumber.value)
         note += `Order Number: ${orderNumber.value}\n`;
 
-    if (deliveryDate.value)
-        note += `Delivery Date: ${deliveryDate.value}\n`;
-
-    if (copay.value)
-        note += `Copay / AR Balance: ${copay.value}\n`;
+    note += `Delivery Date: ${deliveryDate.value}\n`;
+    note += `Copay / AR Balance: ${copay.value}\n`;
 
     if (obeNeeded.value)
         note += `OBE Needed: ${obeNeeded.value}\n`;
@@ -239,30 +228,23 @@ copyBtn.addEventListener("click", async () => {
     if (activeObe.value)
         note += `Active OBE: ${activeObe.value}\n`;
 
-    if (medicaid.value)
-        note += `Insurance Under Medicaid: ${medicaid.value}\n`;
-
-    if (sameAddress.value)
-        note += `Address Same As Previous Order: ${sameAddress.value}\n`;
+    note += `Insurance Under Medicaid: ${medicaid.value}\n`;
+    note += `Address Same As Previous Order: ${sameAddress.value}\n`;
 
     if (sameMd.value)
         note += `Same MD On Rx: ${sameMd.value}\n`;
 
-    if (shippingAddress.value)
-        note += `Shipping Address: ${shippingAddress.value}\n`;
-
-    if (growthHormone.value)
-        note += `Growth Hormone Medication: ${growthHormone.value}\n`;
+    note += `Shipping Address: ${shippingAddress.value}\n`;
+    note += `Growth Hormone Medication: ${growthHormone.value}\n`;
 
     if (restrictedState.value)
         note += `Shipping State CO/ID/MN/NV/RI/WV: ${restrictedState.value}\n`;
 
-    if (shippingMethod.value)
-        note += `Shipping Method: ${shippingMethod.value}\n`;
+    note += `Shipping Method: ${shippingMethod.value}\n`;
 
     if (
         shippingMethod.value === "Other" &&
-        otherShippingMethod.value
+        otherShippingMethod.value.trim()
     ) {
         note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
     }
@@ -274,9 +256,10 @@ copyBtn.addEventListener("click", async () => {
 
         await navigator.clipboard.writeText(note);
 
-    } catch {
+    } catch (err) {
 
         alert("Unable to copy note.");
+        console.error(err);
         return;
 
     }
@@ -299,6 +282,7 @@ copyBtn.addEventListener("click", async () => {
     alert("Case note copied and saved successfully.");
 
 });
+
 // ==========================
 // HISTORY
 // ==========================
