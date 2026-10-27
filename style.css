@@ -103,18 +103,20 @@ body{
 }
 
 .clock-card{
-    padding:6px 10px;
-    min-width:85px;
+    background:#FFF7F0;
+    border:1px solid #FFE4CC;
+    border-radius:8px;
+    padding:5px 8px;
+    min-width:80px;
 }
 
 .clock-label{
-    font-size:10px;
+    font-size:9px;
 }
 
 .clock-time{
-    font-size:12px;
+    font-size:11px;
 }
-
 /* ====================================
    CARD
 ==================================== */
