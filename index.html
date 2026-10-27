@@ -1,57 +1,50 @@
-const generateBtn = document.getElementById("generateBtn");
-const copyBtn = document.getElementById("copyBtn");
-const clearBtn = document.getElementById("clearBtn");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Note Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-generateBtn.addEventListener("click", () => {
-    const patientName = document.getElementById("patientName").value.trim();
-    const dob = document.getElementById("dob").value.trim();
-    const medication = document.getElementById("medication").value.trim();
-    const reason = document.getElementById("reason").value.trim();
-    const notes = document.getElementById("notes").value.trim();
+    <div class="container">
+        <h1>Case Note Generator</h1>
 
-    const caseNote = `
-PATIENT NAME: ${patientName || "N/A"}
-DOB: ${dob || "N/A"}
-MEDICATION: ${medication || "N/A"}
+        <div class="form-section">
 
-REASON FOR CALL:
-${reason || "N/A"}
+            <label>Patient Name</label>
+            <input type="text" id="patientName" placeholder="Enter patient name">
 
-CASE NOTES:
-${notes || "N/A"}
+            <label>DOB</label>
+            <input type="text" id="dob" placeholder="MM/DD/YYYY">
 
-DOCUMENTATION COMPLETED.
-`;
+            <label>Medication</label>
+            <input type="text" id="medication" placeholder="Medication name">
 
-    document.getElementById("output").value = caseNote.trim();
-});
+            <label>Reason for Call</label>
+            <input type="text" id="reason" placeholder="Reason for call">
 
-copyBtn.addEventListener("click", async () => {
-    const output = document.getElementById("output");
+            <label>Case Notes</label>
+            <textarea id="notes" rows="6" placeholder="Enter case notes"></textarea>
 
-    if (!output.value.trim()) {
-        alert("Nothing to copy.");
-        return;
-    }
+            <div class="button-group">
+                <button id="generateBtn">Generate Note</button>
+                <button id="clearBtn" class="secondary">Clear</button>
+            </div>
+        </div>
 
-    try {
-        await navigator.clipboard.writeText(output.value);
-        copyBtn.textContent = "Copied!";
-        
-        setTimeout(() => {
-            copyBtn.textContent = "Copy";
-        }, 2000);
+        <div class="output-section">
+            <div class="output-header">
+                <h2>Generated Case Note</h2>
+                <button id="copyBtn">Copy</button>
+            </div>
 
-    } catch (error) {
-        alert("Copy failed.");
-    }
-});
+            <textarea id="output" rows="12" readonly></textarea>
+        </div>
+    </div>
 
-clearBtn.addEventListener("click", () => {
-    document.getElementById("patientName").value = "";
-    document.getElementById("dob").value = "";
-    document.getElementById("medication").value = "";
-    document.getElementById("reason").value = "";
-    document.getElementById("notes").value = "";
-    document.getElementById("output").value = "";
-});
+    <script src="script.js"></script>
+
+</body>
+</html>
