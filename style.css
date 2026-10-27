@@ -1,82 +1,192 @@
-/* HEADER */
+<!DOCTYPE html>
+<html lang="en">
 
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 25px;
-    background:#ffffff;
-    border-radius:18px;
-    box-shadow:0 8px 30px rgba(0,0,0,.06);
-    margin-bottom:20px;
-}
-.tabs{
-    display:flex;
-    gap:12px;
-    margin-bottom:20px;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASE NOTE</title>
 
-.tabs button{
-    border:none;
-    background:white;
-    color:#666;
-    padding:14px 30px;
-    border-radius:14px;
-    cursor:pointer;
-    font-weight:700;
-    font-size:15px;
-    transition:.3s;
-    border:1px solid #e8e8e8;
-}
+    <link rel="stylesheet" href="style.css">
+</head>
 
-.tabs button:hover{
-    transform:translateY(-2px);
-}
+<body>
 
-.tabs button.active{
-    background:#FF933E;
-    color:white;
-    border:none;
-    box-shadow:0 8px 20px rgba(255,147,62,.35);
-}
+    <div class="container">
 
-.header-left{
-    display:flex;
-    flex-direction:column;
-}
+        <header class="header">
 
-.header h1{
-    font-size:32px;
-    font-weight:800;
-    color:#222;
-    letter-spacing:.5px;
-}
+            <div class="header-top">
 
-/* CLOCKS */
+                <div class="tabs">
+                    <button class="tab-btn active" id="noteTabBtn">
+                        Note
+                    </button>
 
-.clocks{
-    display:flex;
-    gap:12px;
-}
+                    <button class="tab-btn" id="historyTabBtn">
+                        History
+                    </button>
+                </div>
 
-.clock-card{
-    background:white;
-    border:1px solid #ececec;
-    min-width:150px;
-    padding:12px;
-    border-radius:14px;
-    text-align:center;
-    box-shadow:0 4px 10px rgba(0,0,0,.04);
-}
+                <div class="time-container">
 
-.clock-title{
-    font-size:12px;
-    color:#888;
-    margin-bottom:5px;
-}
+                    <div class="time-card">
+                        <span class="time-title">PH Time</span>
+                        <span id="phTime"></span>
+                    </div>
 
-.clock-time{
-    font-size:16px;
-    font-weight:700;
-    color:#333;
-}
+                    <div class="time-card">
+                        <span class="time-title">EST Time</span>
+                        <span id="estTime"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h1>CASE NOTE</h1>
+
+        </header>
+
+        <!-- NOTE TAB -->
+
+        <div id="noteTab" class="content-card">
+
+            <label>Spoke With *</label>
+            <select id="spokeWith">
+                <option value="">Select</option>
+                <option>Patient</option>
+                <option>Spouse</option>
+                <option>Child</option>
+                <option>Sibling</option>
+                <option>Other</option>
+            </select>
+
+            <div id="otherRelationshipContainer" style="display:none;">
+                <label>Other Relationship</label>
+                <input type="text" id="otherRelationship">
+            </div>
+
+            <label>Caller's Name *</label>
+            <input type="text" id="callerName">
+
+            <label>MD Office Hours</label>
+            <input type="text" id="mdOfficeHours">
+
+            <label>PUNR *</label>
+            <select id="punr">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Order Number</label>
+            <input type="number" id="orderNumber">
+
+            <label>Delivery Date *</label>
+            <input type="date" id="deliveryDate">
+
+            <label>Copay / AR Balance *</label>
+            <input type="text" id="copay">
+
+            <label>OBE Needed?</label>
+            <select id="obeNeeded">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Is There an Active OBE?</label>
+            <select id="activeObe">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Insurance Under Medicaid *</label>
+            <select id="medicaid">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Same Address as Previous Order *</label>
+            <select id="sameAddress">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Same MD on the RX?</label>
+            <select id="sameMd">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Shipping Address *</label>
+            <textarea id="shippingAddress"></textarea>
+
+            <label>Growth Hormone? *</label>
+            <select id="growthHormone">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>State CO ID MN NV RI WV?</label>
+            <select id="specialState">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Shipping Method *</label>
+            <select id="shippingMethod">
+                <option value="">Select</option>
+                <option>Signature Required</option>
+                <option>No Signature Required</option>
+                <option>Other</option>
+            </select>
+
+            <div id="otherShippingContainer" style="display:none;">
+                <label>Specify Shipping Method</label>
+                <input type="text" id="otherShippingMethod">
+            </div>
+
+            <div class="reminder">
+                Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.
+            </div>
+
+            <div class="attestation">
+                <input type="checkbox" id="attestation">
+
+                <label for="attestation">
+                    I attest that I have verified with the patient that there are no changes to the insurance on file.
+                </label>
+            </div>
+
+            <div class="button-group">
+                <button id="copyNoteBtn" disabled>
+                    Copy Note
+                </button>
+
+                <button id="clearBtn">
+                    Clear Form
+                </button>
+            </div>
+
+        </div>
+
+        <!-- HISTORY TAB -->
+
+        <div id="historyTab" class="content-card hidden">
+            <div id="historyContainer"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
