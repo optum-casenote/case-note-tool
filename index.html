@@ -5,37 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CASE NOTE</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="app">
+    <div class="container">
 
-        <header class="topbar">
+        <!-- HEADER -->
 
-            <div class="left-side">
+        <header class="header">
+
+            <div>
+                <h1 class="logo">CASE NOTE</h1>
 
                 <div class="tabs">
-                    <button id="noteTabBtn" class="tab active">Note</button>
-                    <button id="historyTabBtn" class="tab">History</button>
+                    <button id="noteTabBtn" class="tab-btn active">
+                        Note
+                    </button>
+
+                    <button id="historyTabBtn" class="tab-btn">
+                        History
+                    </button>
                 </div>
-
-                <h1>CASE NOTE</h1>
-
             </div>
 
-            <div class="clock-section">
+            <div class="clock-wrapper">
 
                 <div class="clock-card">
-                    <span>PH Time</span>
-                    <strong id="phTime"></strong>
+                    <div class="clock-label">PH Time</div>
+                    <div id="phTime" class="clock-time"></div>
                 </div>
 
                 <div class="clock-card">
-                    <span>EST Time</span>
-                    <strong id="estTime"></strong>
+                    <div class="clock-label">EST Time</div>
+                    <div id="estTime" class="clock-time"></div>
                 </div>
 
             </div>
@@ -46,7 +50,13 @@
 
         <section id="noteTab" class="card">
 
-            <label>Spoke With *</label>
+            <!-- SPOKE WITH -->
+
+            <label>
+                Spoke With
+                <span class="required">*</span>
+            </label>
+
             <select id="spokeWith">
                 <option value="">Select</option>
                 <option>Patient</option>
@@ -56,74 +66,168 @@
                 <option>Other</option>
             </select>
 
-            <div id="otherRelationshipContainer" style="display:none">
+            <div id="otherRelationshipContainer" style="display:none; margin-top:10px;">
                 <label>Other Relationship</label>
                 <input type="text" id="otherRelationship">
             </div>
 
-            <label>Caller's Name *</label>
-            <input type="text" id="callerName">
+            <!-- CALLER -->
 
             <label>
-  MD Office Hours
-  <span class="field-note">(If Office-Based)</span>
-</label>
+                Caller's Name
+                <span class="required">*</span>
+            </label>
 
-            <label>PUNR *</label>
+            <input type="text" id="callerName">
+
+            <!-- MD HOURS -->
+
+            <label>
+                MD Office Hours
+                <span class="field-note">(If Office-Based)</span>
+            </label>
+
+            <input type="text" id="mdOfficeHours">
+
+            <!-- PUNR -->
+
+            <label>
+                PUNR
+                <span class="required">*</span>
+            </label>
+
             <select id="punr">
                 <option value="">Select</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
 
+            <!-- ORDER NUMBER -->
+
             <label>Order Number</label>
+
             <input type="number" id="orderNumber">
 
-            <label>Delivery Date *</label>
+            <!-- DELIVERY DATE -->
+
+            <label>
+                Delivery Date
+                <span class="required">*</span>
+            </label>
+
             <input type="date" id="deliveryDate">
 
-            <label>Copay / AR Balance *</label>
-            <input type="text" id="copay">
+            <!-- COPAY -->
+
+            <label>
+                Copay / AR Balance
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="copay"
+                placeholder="$0.00">
+
+            <!-- OBE -->
 
             <label>OBE Needed?</label>
+
             <select id="obeNeeded">
                 <option value="">Select</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
 
+            <!-- ACTIVE OBE -->
+
             <label>Is There an Active OBE?</label>
+
             <select id="activeObe">
                 <option value="">Select</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
 
-            <label>Insurance Under Medicaid *</label>
+            <!-- MEDICAID -->
+
+            <label>
+                Is There Insurance Under Medicaid?
+                <span class="required">*</span>
+            </label>
+
             <select id="medicaid">
                 <option value="">Select</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
 
-            <label>Address Same As Previous Order? *</label>
+            <!-- SAME ADDRESS -->
+
+            <label>
+                Is the Address the Same as the Previous Order?
+                <span class="required">*</span>
+            </label>
+
             <select id="sameAddress">
                 <option value="">Select</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
 
-            <label>Shipping Address *</label>
+            <!-- SAME MD -->
+
+            <label>
+                If Shipping to MDO, Is It the Same MD on the Rx?
+            </label>
+
+            <select id="sameMd">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <!-- SHIPPING ADDRESS -->
+
+            <label>
+                Shipping Address
+                <span class="required">*</span>
+            </label>
+
             <textarea id="shippingAddress"></textarea>
 
-            <label>Growth Hormone? *</label>
+            <!-- GROWTH HORMONE -->
+
+            <label>
+                Is the Medication a Growth Hormone?
+                <span class="required">*</span>
+            </label>
+
             <select id="growthHormone">
                 <option value="">Select</option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
 
-            <label>Shipping Method *</label>
+            <!-- RESTRICTED STATES -->
+
+            <label>
+                Is the Shipping State CO, ID, MN, NV, RI, or WV?
+            </label>
+
+            <select id="restrictedState">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <!-- SHIPPING METHOD -->
+
+            <label>
+                Shipping Method
+                <span class="required">*</span>
+            </label>
+
             <select id="shippingMethod">
                 <option value="">Select</option>
                 <option>Signature Required</option>
@@ -131,33 +235,73 @@
                 <option>Other</option>
             </select>
 
-            <div id="otherShippingContainer" style="display:none">
+            <div id="otherShippingContainer" style="display:none; margin-top:10px;">
                 <label>Specify Shipping Method</label>
                 <input type="text" id="otherShippingMethod">
             </div>
 
-            <div class="reminder">
-                Deliveries to CO, ID, MN, NV, RI and WV must require a signature.
+            <!-- REMINDER -->
+
+            <div class="reminder-box">
+                <strong>Shipping Reminder:</strong><br>
+                Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.
             </div>
+
+            <!-- ATTESTATION -->
 
             <div class="attestation">
-                <input type="checkbox" id="attestation">
+
                 <label>
+
+                    <input
+                        type="checkbox"
+                        id="attestation">
+
                     I attest that I have verified with the patient that there are no changes to the insurance on file.
+
                 </label>
+
             </div>
 
-            <div class="button-group">
-                <button id="copyNoteBtn" disabled>Copy Note</button>
-                <button id="clearBtn">Clear Form</button>
+            <!-- BUTTONS -->
+
+            <div class="button-row">
+
+                <button
+                    id="copyNoteBtn"
+                    class="btn btn-copy"
+                    disabled>
+
+                    Copy Note
+
+                </button>
+
+                <button
+                    id="clearBtn"
+                    class="btn btn-clear">
+
+                    Clear Form
+
+                </button>
+
             </div>
 
         </section>
 
-        <!-- HISTORY -->
+        <!-- HISTORY TAB -->
 
-        <section id="historyTab" class="card hidden">
-            <div id="historyContainer"></div>
+        <section
+            id="historyTab"
+            class="card hidden">
+
+            <div id="historyContainer">
+
+                <div class="empty-history">
+                    No saved case notes yet.
+                </div>
+
+            </div>
+
         </section>
 
     </div>
@@ -165,4 +309,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
