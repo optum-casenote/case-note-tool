@@ -86,41 +86,148 @@ document.getElementById("copyNoteBtn").disabled=!this.checked;
 
 // Copy Note
 
-document.getElementById("copyNoteBtn").addEventListener("click",async()=>{
+// Copy Note
 
-let note="CASE NOTE\n\n";
+document.getElementById("copyNoteBtn").addEventListener("click", async () => {
 
-if(callerName.value)
-note += `Caller's Name: ${callerName.value}\n`;
+    // Required Field Validation
 
-if(mdOfficeHours.value)
-note += `MD Office Hours: ${mdOfficeHours.value}\n`;
+    if (!spokeWith.value) {
+        alert("Spoke With is required.");
+        return;
+    }
 
-note += `Spoke With: ${spokeWith.value}\n`;
-note += `PUNR: ${punr.value}\n`;
+    if (!callerName.value) {
+        alert("Caller's Name is required.");
+        return;
+    }
 
-if(orderNumber.value)
-note += `Order Number: ${orderNumber.value}\n`;
+    if (!punr.value) {
+        alert("PUNR is required.");
+        return;
+    }
 
-note += `Delivery Date: ${deliveryDate.value}\n`;
-note += `Copay / AR Balance: ${copay.value}\n`;
+    if (!deliveryDate.value) {
+        alert("Delivery Date is required.");
+        return;
+    }
 
-await navigator.clipboard.writeText(note);
+    if (!copay.value) {
+        alert("Copay / AR Balance is required.");
+        return;
+    }
 
-let history =
-JSON.parse(localStorage.getItem("caseNotes") || "[]");
+    if (!medicaid.value) {
+        alert("Insurance Under Medicaid is required.");
+        return;
+    }
 
-history.unshift({
-date:new Date().toLocaleString(),
-note
-});
+    if (!sameAddress.value) {
+        alert("Address confirmation is required.");
+        return;
+    }
 
-localStorage.setItem(
-"caseNotes",
-JSON.stringify(history)
-);
+    if (!shippingAddress.value) {
+        alert("Shipping Address is required.");
+        return;
+    }
 
-alert("Case note copied and saved successfully.");
+    if (!growthHormone.value) {
+        alert("Growth Hormone field is required.");
+        return;
+    }
+
+    if (!shippingMethod.value) {
+        alert("Shipping Method is required.");
+        return;
+    }
+
+    let note = "CASE NOTE\n\n";
+
+    // Always Include Required Fields
+
+    note += `Spoke With: ${spokeWith.value}\n`;
+
+    if (
+        spokeWith.value === "Other" &&
+        otherRelationship.value
+    ) {
+        note += `Other Relationship: ${otherRelationship.value}\n`;
+    }
+
+    note += `Caller's Name: ${callerName.value}\n`;
+
+    // Include ALL Filled Fields
+
+    if (mdOfficeHours.value)
+        note += `MD Office Hours: ${mdOfficeHours.value}\n`;
+
+    note += `PUNR: ${punr.value}\n`;
+
+    if (orderNumber.value)
+        note += `Order Number: ${orderNumber.value}\n`;
+
+    if (deliveryDate.value)
+        note += `Delivery Date: ${deliveryDate.value}\n`;
+
+    if (copay.value)
+        note += `Copay / AR Balance: ${copay.value}\n`;
+
+    if (obeNeeded.value)
+        note += `OBE Needed: ${obeNeeded.value}\n`;
+
+    if (activeObe.value)
+        note += `Active OBE: ${activeObe.value}\n`;
+
+    if (medicaid.value)
+        note += `Insurance Under Medicaid: ${medicaid.value}\n`;
+
+    if (sameAddress.value)
+        note += `Address Same As Previous Order: ${sameAddress.value}\n`;
+
+    if (sameMd.value)
+        note += `Same MD On Rx: ${sameMd.value}\n`;
+
+    if (shippingAddress.value)
+        note += `Shipping Address: ${shippingAddress.value}\n`;
+
+    if (growthHormone.value)
+        note += `Growth Hormone Medication: ${growthHormone.value}\n`;
+
+    if (restrictedState.value)
+        note += `Shipping State CO/ID/MN/NV/RI/WV: ${restrictedState.value}\n`;
+
+    if (shippingMethod.value)
+        note += `Shipping Method: ${shippingMethod.value}\n`;
+
+    if (
+        shippingMethod.value === "Other" &&
+        otherShippingMethod.value
+    ) {
+        note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
+    }
+
+    // Copy To Clipboard
+
+    await navigator.clipboard.writeText(note);
+
+    // Save History
+
+    let history = JSON.parse(
+        localStorage.getItem("caseNotes") || "[]"
+    );
+
+    history.unshift({
+        date: new Date().toLocaleString(),
+        note: note
+    });
+
+    localStorage.setItem(
+        "caseNotes",
+        JSON.stringify(history)
+    );
+
+    alert("Case note copied and saved successfully.");
 
 });
 
