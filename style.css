@@ -10,6 +10,35 @@
     box-shadow:0 8px 30px rgba(0,0,0,.06);
     margin-bottom:20px;
 }
+.tabs{
+    display:flex;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.tabs button{
+    border:none;
+    background:white;
+    color:#666;
+    padding:14px 30px;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:15px;
+    transition:.3s;
+    border:1px solid #e8e8e8;
+}
+
+.tabs button:hover{
+    transform:translateY(-2px);
+}
+
+.tabs button.active{
+    background:#FF933E;
+    color:white;
+    border:none;
+    box-shadow:0 8px 20px rgba(255,147,62,.35);
+}
 
 .header-left{
     display:flex;
