@@ -5,51 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CASE NOTE</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="app">
 
-        <header class="header">
+        <header class="topbar">
 
-            <div class="header-top">
+            <div class="left-side">
 
                 <div class="tabs">
-                    <button class="tab-btn active" id="noteTabBtn">
-                        Note
-                    </button>
-
-                    <button class="tab-btn" id="historyTabBtn">
-                        History
-                    </button>
+                    <button id="noteTabBtn" class="tab active">Note</button>
+                    <button id="historyTabBtn" class="tab">History</button>
                 </div>
 
-                <div class="time-container">
-
-                    <div class="time-card">
-                        <span class="time-title">PH Time</span>
-                        <span id="phTime"></span>
-                    </div>
-
-                    <div class="time-card">
-                        <span class="time-title">EST Time</span>
-                        <span id="estTime"></span>
-                    </div>
-
-                </div>
+                <h1>CASE NOTE</h1>
 
             </div>
 
-            <h1>CASE NOTE</h1>
+            <div class="clock-section">
+
+                <div class="clock-card">
+                    <span>PH Time</span>
+                    <strong id="phTime"></strong>
+                </div>
+
+                <div class="clock-card">
+                    <span>EST Time</span>
+                    <strong id="estTime"></strong>
+                </div>
+
+            </div>
 
         </header>
 
         <!-- NOTE TAB -->
 
-        <div id="noteTab" class="content-card">
+        <section id="noteTab" class="card">
 
             <label>Spoke With *</label>
             <select id="spokeWith">
@@ -61,7 +55,7 @@
                 <option>Other</option>
             </select>
 
-            <div id="otherRelationshipContainer" style="display:none;">
+            <div id="otherRelationshipContainer" style="display:none">
                 <label>Other Relationship</label>
                 <input type="text" id="otherRelationship">
             </div>
@@ -109,15 +103,8 @@
                 <option>No</option>
             </select>
 
-            <label>Same Address as Previous Order *</label>
+            <label>Address Same As Previous Order? *</label>
             <select id="sameAddress">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
-
-            <label>Same MD on the RX?</label>
-            <select id="sameMd">
                 <option value="">Select</option>
                 <option>Yes</option>
                 <option>No</option>
@@ -133,13 +120,6 @@
                 <option>No</option>
             </select>
 
-            <label>State CO ID MN NV RI WV?</label>
-            <select id="specialState">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
-
             <label>Shipping Method *</label>
             <select id="shippingMethod">
                 <option value="">Select</option>
@@ -148,45 +128,38 @@
                 <option>Other</option>
             </select>
 
-            <div id="otherShippingContainer" style="display:none;">
+            <div id="otherShippingContainer" style="display:none">
                 <label>Specify Shipping Method</label>
                 <input type="text" id="otherShippingMethod">
             </div>
 
             <div class="reminder">
-                Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.
+                Deliveries to CO, ID, MN, NV, RI and WV must require a signature.
             </div>
 
             <div class="attestation">
                 <input type="checkbox" id="attestation">
-
-                <label for="attestation">
+                <label>
                     I attest that I have verified with the patient that there are no changes to the insurance on file.
                 </label>
             </div>
 
             <div class="button-group">
-                <button id="copyNoteBtn" disabled>
-                    Copy Note
-                </button>
-
-                <button id="clearBtn">
-                    Clear Form
-                </button>
+                <button id="copyNoteBtn" disabled>Copy Note</button>
+                <button id="clearBtn">Clear Form</button>
             </div>
 
-        </div>
+        </section>
 
-        <!-- HISTORY TAB -->
+        <!-- HISTORY -->
 
-        <div id="historyTab" class="content-card hidden">
+        <section id="historyTab" class="card hidden">
             <div id="historyContainer"></div>
-        </div>
+        </section>
 
     </div>
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
