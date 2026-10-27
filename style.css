@@ -171,8 +171,8 @@ textarea{
 }
 
 textarea{
-    min-height:140px;
-    resize:vertical;
+    min-height:120px;
+   resize:vertical;
 }
 
 input:focus,
