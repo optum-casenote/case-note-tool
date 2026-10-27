@@ -191,10 +191,12 @@ copyBtn.addEventListener("click", async () => {
         return;
     }
 
-    if (!shippingMethod.value) {
-        alert("Shipping Method is required.");
-        return;
-    }
+    if (
+    shippingMethod.value === "Other" &&
+    otherShippingMethod.value
+) {
+    note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
+}
 
     if (
         shippingMethod.value === "Other" &&
