@@ -1,4 +1,4 @@
-// LIVE CLOCKS
+// CLOCKS
 
 function updateClocks() {
 
@@ -19,16 +19,15 @@ setInterval(updateClocks,1000);
 
 // TABS
 
-const noteBtn = document.getElementById("noteTabBtn");
-const historyBtn = document.getElementById("historyTabBtn");
+const noteBtn=document.getElementById("noteTabBtn");
+const historyBtn=document.getElementById("historyTabBtn");
 
-const noteTab = document.getElementById("noteTab");
-const historyTab = document.getElementById("historyTab");
+const noteTab=document.getElementById("noteTab");
+const historyTab=document.getElementById("historyTab");
 
 noteBtn.onclick=()=>{
 noteTab.classList.remove("hidden");
 historyTab.classList.add("hidden");
-
 noteBtn.classList.add("active");
 historyBtn.classList.remove("active");
 };
@@ -36,79 +35,80 @@ historyBtn.classList.remove("active");
 historyBtn.onclick=()=>{
 historyTab.classList.remove("hidden");
 noteTab.classList.add("hidden");
-
 historyBtn.classList.add("active");
 noteBtn.classList.remove("active");
-
-renderHistory();
+loadHistory();
 };
 
-// OTHER RELATIONSHIP
+// Other Relationship
 
-document.getElementById("spokeWith")
-.addEventListener("change",function(){
+document.getElementById("spokeWith").addEventListener("change",function(){
 
-document.getElementById(
-"otherRelationshipContainer"
-).style.display =
-this.value==="Other"
-? "block"
-: "none";
+document.getElementById("otherRelationshipContainer").style.display =
+this.value==="Other" ? "block" : "none";
 
 });
 
-// SHIPPING METHOD
+// Other Shipping
 
-document.getElementById("shippingMethod")
-.addEventListener("change",function(){
+document.getElementById("shippingMethod").addEventListener("change",function(){
 
-document.getElementById(
-"otherShippingContainer"
-).style.display =
-this.value==="Other"
-? "block"
-: "none";
+document.getElementById("otherShippingContainer").style.display =
+this.value==="Other" ? "block" : "none";
 
 });
 
-// ENABLE COPY
+// Currency
 
-document.getElementById("attestation")
-.addEventListener("change",function(){
+document.getElementById("copay").addEventListener("blur",function(){
 
-document.getElementById("copyNoteBtn")
-.disabled=!this.checked;
+let num=this.value.replace(/[^\d.]/g,'');
+
+if(num){
+this.value=Number(num).toLocaleString(
+'en-US',
+{
+style:'currency',
+currency:'USD'
+}
+);
+}
 
 });
 
-// COPY NOTE
+// Attestation
 
-document.getElementById("copyNoteBtn")
-.addEventListener("click",()=>{
+document.getElementById("attestation").addEventListener("change",function(){
 
-const note=`CASE NOTE
+document.getElementById("copyNoteBtn").disabled=!this.checked;
 
-Spoke With: ${spokeWith.value}
+});
 
-Caller's Name: ${callerName.value}
+// Copy Note
 
-PUNR: ${punr.value}
+document.getElementById("copyNoteBtn").addEventListener("click",async()=>{
 
-Delivery Date: ${deliveryDate.value}
+let note="CASE NOTE\n\n";
 
-Copay / AR Balance: ${copay.value}
+if(callerName.value)
+note += `Caller's Name: ${callerName.value}\n`;
 
-Shipping Address:
-${shippingAddress.value}
-`;
+if(mdOfficeHours.value)
+note += `MD Office Hours: ${mdOfficeHours.value}\n`;
 
-navigator.clipboard.writeText(note);
+note += `Spoke With: ${spokeWith.value}\n`;
+note += `PUNR: ${punr.value}\n`;
+
+if(orderNumber.value)
+note += `Order Number: ${orderNumber.value}\n`;
+
+note += `Delivery Date: ${deliveryDate.value}\n`;
+note += `Copay / AR Balance: ${copay.value}\n`;
+
+await navigator.clipboard.writeText(note);
 
 let history =
-JSON.parse(
-localStorage.getItem("caseHistory")
-|| "[]"
-);
+JSON.parse(localStorage.getItem("caseNotes") || "[]");
 
 history.unshift({
 date:new Date().toLocaleString(),
@@ -116,39 +116,30 @@ note
 });
 
 localStorage.setItem(
-"caseHistory",
+"caseNotes",
 JSON.stringify(history)
 );
 
-alert(
-"Case note copied and saved successfully."
-);
+alert("Case note copied and saved successfully.");
 
 });
 
-// RENDER HISTORY
+// History
 
-function renderHistory(){
+function loadHistory(){
 
-const container =
-document.getElementById(
-"historyContainer"
-);
+const container=document.getElementById("historyContainer");
 
 container.innerHTML="";
 
 const history=
-JSON.parse(
-localStorage.getItem(
-"caseHistory"
-)||"[]"
-);
+JSON.parse(localStorage.getItem("caseNotes")||"[]");
 
 history.forEach(item=>{
 
-container.innerHTML += `
+container.innerHTML+=`
 <div class="history-card">
-<small>${item.date}</small>
+<div>${item.date}</div>
 <pre>${item.note}</pre>
 </div>
 `;
@@ -157,30 +148,26 @@ container.innerHTML += `
 
 }
 
-// CLEAR
+// Clear
 
-document.getElementById("clearBtn")
-.addEventListener("click",()=>{
+document.getElementById("clearBtn").addEventListener("click",()=>{
 
-if(!confirm("Clear all fields?"))
-return;
+if(!confirm("Clear all fields?")) return;
 
-document
-.querySelectorAll(
-"input[type=text],input[type=number],textarea"
-)
-.forEach(el=>el.value="");
+document.querySelectorAll("input, textarea")
+.forEach(el=>{
 
-document
-.querySelectorAll("select")
+if(el.type==="checkbox"){
+el.checked=false;
+}else{
+el.value="";
+}
+
+});
+
+document.querySelectorAll("select")
 .forEach(el=>el.selectedIndex=0);
 
-document
-.getElementById("attestation")
-.checked=false;
-
-document
-.getElementById("copyNoteBtn")
-.disabled=true;
+copyNoteBtn.disabled=true;
 
 });
