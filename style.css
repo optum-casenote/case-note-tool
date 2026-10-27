@@ -164,10 +164,14 @@ textarea{
     font-size:14px;
     transition:.25s;
    margin-bottom:8px;
-5
 }
+select{
+    color:#9a9a9a;
 }
 
+select:valid{
+    color:#333;
+}
 textarea{
     min-height:120px;
    resize:vertical;
