@@ -146,6 +146,8 @@ copyBtn.addEventListener("click", async () => {
     const shippingMethod = document.getElementById("shippingMethod");
     const otherShippingMethod = document.getElementById("otherShippingMethod");
 
+    // Required Validation
+
     if (!spokeWith.value) {
         alert("Spoke With is required.");
         return;
@@ -191,19 +193,10 @@ copyBtn.addEventListener("click", async () => {
         return;
     }
 
-    if (
-    shippingMethod.value === "Other" &&
-    otherShippingMethod.value
-) {
-    note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
-}
-
-note += `\n`;
-note += `Shipping Reminder:\n`;
-note += `Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n\n`;
-
-note += `I attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
-
+    if (!shippingMethod.value) {
+        alert("Shipping Method is required.");
+        return;
+    }
 
     if (
         shippingMethod.value === "Other" &&
@@ -274,9 +267,8 @@ note += `I attest that I have verified with the patient that there are no change
         note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
     }
 
-    note += `\n`;
-note += `Shipping Reminder: Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
-note += `I attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
+    note += `Shipping Reminder: Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
+    note += `I attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
 
     try {
 
@@ -307,7 +299,6 @@ note += `I attest that I have verified with the patient that there are no change
     alert("Case note copied and saved successfully.");
 
 });
-
 // ==========================
 // HISTORY
 // ==========================
