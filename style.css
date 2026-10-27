@@ -1,192 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
+:root{
+--bg:#FCF9EA;
+--primary:#FF933E;
+--border:#E8E8E8;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CASE NOTE</title>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
 
-    <link rel="stylesheet" href="style.css">
-</head>
+body{
+background:var(--bg);
+padding:20px;
+color:#333;
+}
 
-<body>
+.container{
+max-width:1100px;
+margin:auto;
+}
 
-    <div class="container">
+.header{
+margin-bottom:20px;
+}
 
-        <header class="header">
+.header-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
 
-            <div class="header-top">
+h1{
+font-size:38px;
+font-weight:800;
+}
 
-                <div class="tabs">
-                    <button class="tab-btn active" id="noteTabBtn">
-                        Note
-                    </button>
+.tabs{
+display:flex;
+gap:10px;
+}
 
-                    <button class="tab-btn" id="historyTabBtn">
-                        History
-                    </button>
-                </div>
+.tab-btn{
+border:none;
+background:white;
+padding:12px 24px;
+border-radius:14px;
+cursor:pointer;
+font-weight:700;
+border:1px solid var(--border);
+}
 
-                <div class="time-container">
+.tab-btn.active{
+background:var(--primary);
+color:white;
+box-shadow:0 8px 20px rgba(255,147,62,.35);
+}
 
-                    <div class="time-card">
-                        <span class="time-title">PH Time</span>
-                        <span id="phTime"></span>
-                    </div>
+.time-container{
+display:flex;
+gap:12px;
+}
 
-                    <div class="time-card">
-                        <span class="time-title">EST Time</span>
-                        <span id="estTime"></span>
-                    </div>
+.time-card{
+background:white;
+padding:12px 18px;
+border-radius:16px;
+border:1px solid var(--border);
+display:flex;
+flex-direction:column;
+min-width:140px;
+box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
 
-                </div>
+.time-title{
+font-size:12px;
+color:#888;
+}
 
-            </div>
+.content-card{
+background:white;
+border-radius:20px;
+padding:30px;
+border:1px solid var(--border);
+box-shadow:0 10px 30px rgba(0,0,0,.04);
+}
 
-            <h1>CASE NOTE</h1>
+label{
+display:block;
+margin-top:16px;
+margin-bottom:6px;
+font-weight:600;
+}
 
-        </header>
+input,
+textarea,
+select{
+width:100%;
+padding:14px;
+border:1px solid var(--border);
+border-radius:14px;
+font-size:15px;
+background:white;
+}
 
-        <!-- NOTE TAB -->
+input:focus,
+textarea:focus,
+select:focus{
+outline:none;
+border-color:var(--primary);
+box-shadow:0 0 0 4px rgba(255,147,62,.15);
+}
 
-        <div id="noteTab" class="content-card">
+textarea{
+min-height:120px;
+resize:vertical;
+}
 
-            <label>Spoke With *</label>
-            <select id="spokeWith">
-                <option value="">Select</option>
-                <option>Patient</option>
-                <option>Spouse</option>
-                <option>Child</option>
-                <option>Sibling</option>
-                <option>Other</option>
-            </select>
+.reminder{
+margin-top:20px;
+padding:18px;
+background:#FFF3E4;
+border-left:5px solid var(--primary);
+border-radius:12px;
+font-weight:600;
+}
 
-            <div id="otherRelationshipContainer" style="display:none;">
-                <label>Other Relationship</label>
-                <input type="text" id="otherRelationship">
-            </div>
+.attestation{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
 
-            <label>Caller's Name *</label>
-            <input type="text" id="callerName">
+.attestation input{
+width:auto;
+margin-top:5px;
+}
 
-            <label>MD Office Hours</label>
-            <input type="text" id="mdOfficeHours">
+.button-group{
+display:flex;
+gap:12px;
+margin-top:25px;
+}
 
-            <label>PUNR *</label>
-            <select id="punr">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+.button-group button{
+cursor:pointer;
+border:none;
+padding:14px 22px;
+border-radius:14px;
+font-weight:700;
+}
 
-            <label>Order Number</label>
-            <input type="number" id="orderNumber">
+#copyNoteBtn{
+background:var(--primary);
+color:white;
+}
 
-            <label>Delivery Date *</label>
-            <input type="date" id="deliveryDate">
+#clearBtn{
+background:#ECECEC;
+}
 
-            <label>Copay / AR Balance *</label>
-            <input type="text" id="copay">
+.history-card{
+background:#fff;
+border:1px solid var(--border);
+border-radius:14px;
+padding:15px;
+margin-bottom:15px;
+}
 
-            <label>OBE Needed?</label>
-            <select id="obeNeeded">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+.history-card pre{
+white-space:pre-wrap;
+}
 
-            <label>Is There an Active OBE?</label>
-            <select id="activeObe">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+.hidden{
+display:none;
+}
 
-            <label>Insurance Under Medicaid *</label>
-            <select id="medicaid">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+@media(max-width:768px){
 
-            <label>Same Address as Previous Order *</label>
-            <select id="sameAddress">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+.header-top{
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
+}
 
-            <label>Same MD on the RX?</label>
-            <select id="sameMd">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+.time-container{
+width:100%;
+}
 
-            <label>Shipping Address *</label>
-            <textarea id="shippingAddress"></textarea>
+.time-card{
+flex:1;
+}
 
-            <label>Growth Hormone? *</label>
-            <select id="growthHormone">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+.button-group{
+flex-direction:column;
+}
 
-            <label>State CO ID MN NV RI WV?</label>
-            <select id="specialState">
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
+.button-group button{
+width:100%;
+}
 
-            <label>Shipping Method *</label>
-            <select id="shippingMethod">
-                <option value="">Select</option>
-                <option>Signature Required</option>
-                <option>No Signature Required</option>
-                <option>Other</option>
-            </select>
-
-            <div id="otherShippingContainer" style="display:none;">
-                <label>Specify Shipping Method</label>
-                <input type="text" id="otherShippingMethod">
-            </div>
-
-            <div class="reminder">
-                Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.
-            </div>
-
-            <div class="attestation">
-                <input type="checkbox" id="attestation">
-
-                <label for="attestation">
-                    I attest that I have verified with the patient that there are no changes to the insurance on file.
-                </label>
-            </div>
-
-            <div class="button-group">
-                <button id="copyNoteBtn" disabled>
-                    Copy Note
-                </button>
-
-                <button id="clearBtn">
-                    Clear Form
-                </button>
-            </div>
-
-        </div>
-
-        <!-- HISTORY TAB -->
-
-        <div id="historyTab" class="content-card hidden">
-            <div id="historyContainer"></div>
-        </div>
-
-    </div>
-
-    <script src="script.js"></script>
-
-</body>
-
-</html>
+}
