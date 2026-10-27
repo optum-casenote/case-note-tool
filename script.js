@@ -146,8 +146,6 @@ copyBtn.addEventListener("click", async () => {
     const shippingMethod = document.getElementById("shippingMethod");
     const otherShippingMethod = document.getElementById("otherShippingMethod");
 
-    // Required Validation
-
     if (!spokeWith.value) {
         alert("Spoke With is required.");
         return;
@@ -266,6 +264,16 @@ copyBtn.addEventListener("click", async () => {
     ) {
         note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
     }
+
+    note += `\n====================================\n`;
+    note += `SHIPPING REMINDER\n`;
+    note += `====================================\n`;
+    note += `Deliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
+
+    note += `\n====================================\n`;
+    note += `ATTESTATION\n`;
+    note += `====================================\n`;
+    note += `I attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
 
     try {
 
