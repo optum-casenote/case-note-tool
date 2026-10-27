@@ -1,128 +1,186 @@
-body{
-    background:#FCF9EA;
-    font-family:Arial,sans-serif;
-    margin:0;
-    padding:20px;
-}
+// LIVE CLOCKS
 
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
+function updateClocks() {
 
-.header h1{
-    margin:0;
-}
+document.getElementById("phTime").textContent =
+new Date().toLocaleTimeString("en-US",{
+timeZone:"Asia/Manila"
+});
 
-.clocks{
-    text-align:right;
-    font-size:14px;
-}
-
-.tabs{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-}
-
-.tabs button{
-    background:#FF933E;
-    border:none;
-    color:white;
-    padding:12px 20px;
-    cursor:pointer;
-    border-radius:10px;
-}
-
-.active{
-    opacity:1;
-}
-
-.card{
-    background:white;
-    border:1px solid #ddd;
-    border-radius:15px;
-    padding:20px;
-}
-
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:5px;
-    font-weight:600;
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    box-sizing:border-box;
-}
-
-textarea{
-    min-height:100px;
-}
-
-.reminder{
-    background:#FFF8D6;
-    border:1px solid #F0D984;
-    padding:12px;
-    margin-top:20px;
-    border-radius:10px;
-    font-weight:600;
-}
-
-.attestation{
-    margin-top:20px;
-    display:flex;
-    gap:10px;
-}
-
-.buttons{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-}
-
-.buttons button{
-    background:#FF933E;
-    border:none;
-    color:white;
-    padding:12px 20px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.hidden{
-    display:none;
-}
-
-.history-card{
-    background:white;
-    border:1px solid #ddd;
-    padding:15px;
-    margin-bottom:15px;
-    border-radius:10px;
-}
-
-.history-card pre{
-    white-space:pre-wrap;
-}
-
-@media(max-width:768px){
-
-.header{
-    flex-direction:column;
-    align-items:flex-start;
-}
-
-.buttons{
-    flex-direction:column;
-}
+document.getElementById("estTime").textContent =
+new Date().toLocaleTimeString("en-US",{
+timeZone:"America/New_York"
+});
 
 }
+
+updateClocks();
+setInterval(updateClocks,1000);
+
+// TABS
+
+const noteBtn = document.getElementById("noteTabBtn");
+const historyBtn = document.getElementById("historyTabBtn");
+
+const noteTab = document.getElementById("noteTab");
+const historyTab = document.getElementById("historyTab");
+
+noteBtn.onclick=()=>{
+noteTab.classList.remove("hidden");
+historyTab.classList.add("hidden");
+
+noteBtn.classList.add("active");
+historyBtn.classList.remove("active");
+};
+
+historyBtn.onclick=()=>{
+historyTab.classList.remove("hidden");
+noteTab.classList.add("hidden");
+
+historyBtn.classList.add("active");
+noteBtn.classList.remove("active");
+
+renderHistory();
+};
+
+// OTHER RELATIONSHIP
+
+document.getElementById("spokeWith")
+.addEventListener("change",function(){
+
+document.getElementById(
+"otherRelationshipContainer"
+).style.display =
+this.value==="Other"
+? "block"
+: "none";
+
+});
+
+// SHIPPING METHOD
+
+document.getElementById("shippingMethod")
+.addEventListener("change",function(){
+
+document.getElementById(
+"otherShippingContainer"
+).style.display =
+this.value==="Other"
+? "block"
+: "none";
+
+});
+
+// ENABLE COPY
+
+document.getElementById("attestation")
+.addEventListener("change",function(){
+
+document.getElementById("copyNoteBtn")
+.disabled=!this.checked;
+
+});
+
+// COPY NOTE
+
+document.getElementById("copyNoteBtn")
+.addEventListener("click",()=>{
+
+const note=`CASE NOTE
+
+Spoke With: ${spokeWith.value}
+
+Caller's Name: ${callerName.value}
+
+PUNR: ${punr.value}
+
+Delivery Date: ${deliveryDate.value}
+
+Copay / AR Balance: ${copay.value}
+
+Shipping Address:
+${shippingAddress.value}
+`;
+
+navigator.clipboard.writeText(note);
+
+let history =
+JSON.parse(
+localStorage.getItem("caseHistory")
+|| "[]"
+);
+
+history.unshift({
+date:new Date().toLocaleString(),
+note
+});
+
+localStorage.setItem(
+"caseHistory",
+JSON.stringify(history)
+);
+
+alert(
+"Case note copied and saved successfully."
+);
+
+});
+
+// RENDER HISTORY
+
+function renderHistory(){
+
+const container =
+document.getElementById(
+"historyContainer"
+);
+
+container.innerHTML="";
+
+const history=
+JSON.parse(
+localStorage.getItem(
+"caseHistory"
+)||"[]"
+);
+
+history.forEach(item=>{
+
+container.innerHTML += `
+<div class="history-card">
+<small>${item.date}</small>
+<pre>${item.note}</pre>
+</div>
+`;
+
+});
+
+}
+
+// CLEAR
+
+document.getElementById("clearBtn")
+.addEventListener("click",()=>{
+
+if(!confirm("Clear all fields?"))
+return;
+
+document
+.querySelectorAll(
+"input[type=text],input[type=number],textarea"
+)
+.forEach(el=>el.value="");
+
+document
+.querySelectorAll("select")
+.forEach(el=>el.selectedIndex=0);
+
+document
+.getElementById("attestation")
+.checked=false;
+
+document
+.getElementById("copyNoteBtn")
+.disabled=true;
+
+});
