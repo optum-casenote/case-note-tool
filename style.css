@@ -362,8 +362,11 @@ select option{
     }
 
     .form-row{
-        grid-template-columns:1fr;
-    }
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    margin-bottom:25px;
+}
 
     .header{
         gap:15px;
