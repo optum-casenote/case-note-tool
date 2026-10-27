@@ -332,6 +332,112 @@ select option{
 ==================================== */
 
 .history-card{
-    background:white;
+    background:w*ite;
     border:1px solid #eee;
-    border-
+  * border-radius:15px;
+    padding:1*px;
+    margin-bottom:15px;
+}
+
+.hi*tory-card:hover{
+    box-shadow:0 *px 15px rgba(0,0,0,.05);
+}
+
+.histo*y-date{
+    color:#FF933E;
+    fon*-weight:700;
+    margin-bottom:10p*;
+    font-size:14px;
+}
+
+.history-*ote{
+    white-space:pre-wrap;
+   *line-height:*.7;
+    color:#444;
+    font-size:*4px;
+}
+
+.empty-history{
+    text-a*ign:center;
+    color:#999;
+*   padding:40px;
+}
+
+/* ====================================
+   SCROLLBAR
+==================================== */
+
+::-webkit-scrollbar{
+    wid*h:8px;
+}
+
+::-webkit-scrollbar-trac*{
+    background:#f1f1f1;
+}
+
+::-we*kit-scrollbar-thumb{
+    backgroun*:#FF933E;
+    border-radius:50px;
+*
+
+::-webkit-scrollbar-thumb:hover{
+    background:#ff8220;
+}
+
+/* ====================================
+   MOBILE
+==================================== */
+
+@media(max-width:768px){
+
+    b*dy{
+        padding:12px;
+    }
+
+ *  .container{
+        max-width:10*%;
+    }
+
+    .form-row{
+        g*id-template-columns:1fr;
+        g*p:20px;
+    }
+
+   *.card{
+        padding:20px;
+    }*
+    .header{
+        gap:15px;
+  * }
+
+    .clock-wrapper{
+        wi*th:100%;
+        justify-content:f*ex-start;
+        flex-wrap:wrap;
+*   }
+
+    .clock-card{
+        fle*:1;
+        min-width*130px;
+    }
+
+    .tabs{
+        w*dth:100%;
+*   }
+
+    .tab-btn{
+        flex:1*
+    }
+
+    .button-row{
+        f*ex-direction:column;
+    }
+
+    .b*n{
+        width:100%;
+    }
+
+    *logo{
+        font-size*26px;
+    }
+}
