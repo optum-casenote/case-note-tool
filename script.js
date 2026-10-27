@@ -1,57 +1,128 @@
-const generateBtn = document.getElementById("generateBtn");
-const copyBtn = document.getElementById("copyBtn");
-const clearBtn = document.getElementById("clearBtn");
+body{
+    background:#FCF9EA;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
+}
 
-generateBtn.addEventListener("click", () => {
-    const patientName = document.getElementById("patientName").value.trim();
-    const dob = document.getElementById("dob").value.trim();
-    const medication = document.getElementById("medication").value.trim();
-    const reason = document.getElementById("reason").value.trim();
-    const notes = document.getElementById("notes").value.trim();
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
 
-    const caseNote = `
-PATIENT NAME: ${patientName || "N/A"}
-DOB: ${dob || "N/A"}
-MEDICATION: ${medication || "N/A"}
+.header h1{
+    margin:0;
+}
 
-REASON FOR CALL:
-${reason || "N/A"}
+.clocks{
+    text-align:right;
+    font-size:14px;
+}
 
-CASE NOTES:
-${notes || "N/A"}
+.tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
 
-DOCUMENTATION COMPLETED.
-`;
+.tabs button{
+    background:#FF933E;
+    border:none;
+    color:white;
+    padding:12px 20px;
+    cursor:pointer;
+    border-radius:10px;
+}
 
-    document.getElementById("output").value = caseNote.trim();
-});
+.active{
+    opacity:1;
+}
 
-copyBtn.addEventListener("click", async () => {
-    const output = document.getElementById("output");
+.card{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:15px;
+    padding:20px;
+}
 
-    if (!output.value.trim()) {
-        alert("Nothing to copy.");
-        return;
-    }
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:600;
+}
 
-    try {
-        await navigator.clipboard.writeText(output.value);
-        copyBtn.textContent = "Copied!";
-        
-        setTimeout(() => {
-            copyBtn.textContent = "Copy";
-        }, 2000);
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    box-sizing:border-box;
+}
 
-    } catch (error) {
-        alert("Copy failed.");
-    }
-});
+textarea{
+    min-height:100px;
+}
 
-clearBtn.addEventListener("click", () => {
-    document.getElementById("patientName").value = "";
-    document.getElementById("dob").value = "";
-    document.getElementById("medication").value = "";
-    document.getElementById("reason").value = "";
-    document.getElementById("notes").value = "";
-    document.getElementById("output").value = "";
-});
+.reminder{
+    background:#FFF8D6;
+    border:1px solid #F0D984;
+    padding:12px;
+    margin-top:20px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.attestation{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.buttons button{
+    background:#FF933E;
+    border:none;
+    color:white;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none;
+}
+
+.history-card{
+    background:white;
+    border:1px solid #ddd;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:10px;
+}
+
+.history-card pre{
+    white-space:pre-wrap;
+}
+
+@media(max-width:768px){
+
+.header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.buttons{
+    flex-direction:column;
+}
+
+}
