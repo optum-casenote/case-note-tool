@@ -164,6 +164,7 @@ textarea{
     font-size:14px;
     transition:.25s;
    margin-bottom:8px;
+   color: #777
 }
 select{
     color:#9a9a9a;
