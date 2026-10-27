@@ -399,6 +399,14 @@ select option{
         font-size:26px;
     }
 
+   .form-row{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:20px !important;
+    margin-bottom:15px;
+    border:2px solid red;
+}
+
     .card{
         padding:20px;
     }
