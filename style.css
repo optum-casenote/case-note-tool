@@ -13,6 +13,7 @@
     color:#9a9a9a;
     opacity:1;
 }
+
 body{
     background:#FEFAF3;
     color:#333;
@@ -20,8 +21,12 @@ body{
     padding:40px 20px;
 }
 
+/* ====================================
+   CONTAINER
+==================================== */
+
 .container{
-    max-width:700px;
+    max-width:900px;
     margin:0 auto;
 }
 
@@ -38,14 +43,14 @@ body{
 ==================================== */
 
 .header{
-    background:#ffffff;
+    background:#fff;
     border-radius:20px;
     padding:25px;
     margin-bottom:20px;
 
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
+    align-items:center;
     flex-wrap:wrap;
 
     box-shadow:0 12px 30px rgba(0,0,0,.06);
@@ -53,9 +58,9 @@ body{
 
 .logo{
     color:#FF933E;
-    font-size:32px;
+    font-size:30px;
     font-weight:700;
-    margin-bottom:15px;
+    margin-bottom:12px;
 }
 
 /* ====================================
@@ -69,14 +74,14 @@ body{
 
 .tab-btn{
     border:none;
-    background:#f5f5f5;
+    background:#f3f3f3;
     color:#666;
     padding:12px 22px;
     border-radius:12px;
     cursor:pointer;
     font-size:14px;
     font-weight:600;
-    transition:all .25s ease;
+    transition:.25s;
 }
 
 .tab-btn:hover{
@@ -95,7 +100,6 @@ body{
 .clock-wrapper{
     display:flex;
     gap:12px;
-    flex-wrap:wrap;
 }
 
 .clock-card{
@@ -103,20 +107,19 @@ body{
     border:1px solid #FFE1C7;
     border-radius:15px;
     padding:12px 18px;
-    min-width:150px;
+    min-width:140px;
     text-align:center;
 }
 
 .clock-label{
-    font-size:12px;
     color:#999;
+    font-size:12px;
     margin-bottom:5px;
 }
 
 .clock-time{
     font-size:18px;
     font-weight:700;
-    color:#333;
 }
 
 /* ====================================
@@ -125,56 +128,68 @@ body{
 
 .card{
     background:white;
-    padding:30px;
+    padding:35px;
     border-radius:20px;
     box-shadow:0 12px 30px rgba(0,0,0,.06);
 }
 
 /* ====================================
-   FORM
+   FORM LAYOUT
+==================================== */
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    margin-top:0;
+}
+
+/* ====================================
+   LABELS
 ==================================== */
 
 label{
     display:block;
-    margin-top:18px;
+    margin-top:22px;
     margin-bottom:8px;
-
+    font-size:14px;
+    font-weight:600;
+    color:#555;
 }
 
 .field-note{
     font-size:12px;
     color:#999;
     font-weight:400;
-    margin-left:4px;
 }
 
 .required{
-    color:#e53935;
+    color:#E53935;
 }
+
+/* ====================================
+   INPUTS
+==================================== */
 
 input,
 select,
 textarea{
-    width:85%;
+    width:100%;
     padding:13px 14px;
     border:1px solid #ddd;
     border-radius:12px;
-    background:white;
+    background:#fff;
     font-size:14px;
+    color:#777;
     transition:.25s;
-   margin-bottom:8px;
-   color: #777
-}
-select{
-    color:#999;
-}
-
-select:valid{
-    color:#333;
-}
-textarea{
-    min-height:120px;
-   resize:vertical;
 }
 
 input:focus,
@@ -185,6 +200,23 @@ textarea:focus{
     box-shadow:0 0 0 4px rgba(255,147,62,.15);
 }
 
+textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+/* ====================================
+   DROPDOWN LOOK
+==================================== */
+
+select{
+    color:#999;
+}
+
+select option{
+    color:#333;
+}
+
 /* ====================================
    REMINDER
 ==================================== */
@@ -193,10 +225,8 @@ textarea:focus{
     margin-top:25px;
     background:#FFF4EA;
     border-left:5px solid #FF933E;
-
-    padding:15px;
     border-radius:12px;
-
+    padding:15px;
     color:#8A4D17;
     line-height:1.6;
 }
@@ -214,16 +244,15 @@ textarea:focus{
 }
 
 .attestation label{
-    margin:0;
     display:flex;
-    align-items:flex-start;
     gap:10px;
-    line-height:1.5;
+    margin:0;
+    line-height:1.6;
 }
 
 .attestation input{
     width:auto;
-    margin-top:3px;
+    margin-top:4px;
 }
 
 /* ====================================
@@ -241,10 +270,10 @@ textarea:focus{
     border:none;
     border-radius:12px;
     padding:14px 24px;
-    cursor:pointer;
-    font-weight:600;
     font-size:14px;
-    transition:all .25s ease;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
 }
 
 .btn:hover{
@@ -257,11 +286,11 @@ textarea:focus{
 }
 
 .btn-copy:hover{
-    background:#ff8427;
+    background:#ff8220;
 }
 
 .btn-copy:disabled{
-    background:#cfcfcf;
+    background:#cbcbcb;
     cursor:not-allowed;
     transform:none;
 }
@@ -283,17 +312,12 @@ textarea:focus{
     background:white;
     border:1px solid #ececec;
     border-radius:15px;
-    padding:18px;
+    padding:15px;
     margin-bottom:15px;
-}
-
-.history-card:hover{
-    box-shadow:0 6px 18px rgba(0,0,0,.05);
 }
 
 .history-date{
     color:#FF933E;
-    font-size:14px;
     font-weight:700;
     margin-bottom:10px;
 }
@@ -301,7 +325,6 @@ textarea:focus{
 .history-note{
     white-space:pre-wrap;
     line-height:1.7;
-    font-size:14px;
     color:#444;
 }
 
@@ -328,18 +351,18 @@ textarea:focus{
     border-radius:50px;
 }
 
-::-webkit-scrollbar-thumb:hover{
-    background:#ff8427;
-}
-
 /* ====================================
    MOBILE
 ==================================== */
 
-@media (max-width: 768px){
+@media(max-width:768px){
 
     body{
         padding:12px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
     }
 
     .header{
@@ -348,6 +371,7 @@ textarea:focus{
 
     .clock-wrapper{
         width:100%;
+        justify-content:flex-start;
     }
 
     .clock-card{
