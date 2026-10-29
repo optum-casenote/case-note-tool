@@ -1,0 +1,446 @@
+/* ====================================
+   GLOBAL
+==================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background:#FEFAF3;
+    color:#333;
+    min-height:100vh;
+    padding:40px 20px;
+}
+
+::placeholder{
+    color:#999;
+    opacity:1;
+}
+
+/* ====================================
+   CONTAINER
+==================================== */
+
+.container{
+    max-width:950px;
+    margin:0 auto;
+}
+
+/* ====================================
+   HIDDEN
+==================================== */
+
+.hidden{
+    display:none !important;
+}
+
+/* ====================================
+   HEADER
+==================================== */
+
+.header{
+    background:#fff;
+    border-radius:20px;
+    padding:25px 30px;
+    margin-bottom:25px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.header-left{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.logo{
+    color:#FF933E;
+    font-weight:700;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+/* ====================================
+   TABS
+==================================== */
+
+.tabs{
+    display:flex;
+    gap:10px;
+}
+
+.tab-btn{
+    border:none;
+    background:#f4f4f4;
+    color:#666;
+    padding:12px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.tab-btn:hover{
+    transform:translateY(-2px);
+}
+
+.tab-btn.active{
+    background:#FF933E;
+    color:white;
+}
+
+/* ====================================
+   CLOCKS
+==================================== */
+
+.clock-wrapper{
+    display:flex;
+    gap:12px;
+}
+
+.clock-card{
+    background:#FFF7F0;
+    border:1px solid #FFE4CC;
+    border-radius:8px;
+    padding:5px 8px;
+    min-width:80px;
+}
+
+.clock-label{
+    font-size:9px;
+}
+
+.clock-time{
+    font-size:11px;
+}
+/* ====================================
+   CARD
+==================================== */
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+/* ====================================
+   FORM LAYOUT
+==================================== */
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    margin-bottom:25px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+/* ====================================
+   LABELS
+==================================== */
+
+label{
+    display:block;
+    margin-bottom:10px;
+
+    font-size:14px;
+    font-weight:600;
+    color:#555;
+}
+
+.field-note{
+    color:#999;
+    font-size:12px;
+    font-weight:400;
+}
+
+.required{
+    color:#e53935;
+}
+
+/* ====================================
+   INPUTS
+==================================== */
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    background:white;
+    font-size:14px;
+    color:#777;
+    transition:.25s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#FF933E;
+    box-shadow:0 0 0 4px rgba(255,147,62,.15);
+}
+
+textarea{
+    height:52px;
+    min-height:52px;
+    resize:vertical;
+}
+
+/* ====================================
+   FULL WIDTH SECTIONS
+==================================== */
+
+#otherRelationshipContainer,
+#otherShippingContainer{
+    margin-bottom:25px;
+}
+
+#mdOfficeHours,
+#shippingAddress{
+    margin-bottom:25px;
+}
+
+/* ====================================
+   DROPDOWNS
+==================================== */
+
+select{
+    color:#999;
+}
+
+select option{
+    color:#333;
+}
+
+/* ====================================
+   REMINDER BOX
+==================================== */
+
+.reminder-box{
+    margin-top:30px;
+    margin-bottom:30px;
+
+    background:#FFF4EA;
+    border-left:5px solid #FF933E;
+
+    padding:18px;
+    border-radius:12px;
+
+    color:#8A4D17;
+    line-height:1.6;
+}
+
+/* ====================================
+   ATTESTATION
+==================================== */
+
+.attestation{
+    margin-top:20px;
+
+    background:#fafafa;
+    border:1px solid #e5e5e5;
+
+    border-radius:15px;
+    padding:18px;
+}
+
+.attestation label{
+    margin:0;
+
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+
+    line-height:1.6;
+}
+
+.attestation input{
+    width:auto;
+    margin-top:3px;
+}
+
+/* ====================================
+   BUTTONS
+==================================== */
+
+.button-row{
+    margin-top:30px;
+
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    border-radius:12px;
+
+    padding:14px 24px;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-copy{
+    background:#FF933E;
+    color:white;
+}
+
+.btn-copy:hover{
+    background:#ff8220;
+}
+
+.btn-copy:disabled{
+    background:#cccccc;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.btn-clear{
+    background:#efefef;
+    color:#333;
+}
+
+.btn-clear:hover{
+    background:#dfdfdf;
+}
+
+/* ====================================
+   HISTORY
+==================================== */
+
+.history-card{
+    background:white;
+    border:1px solid #eee;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:15px;
+}
+
+.history-card:hover{
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
+}
+
+.history-date{
+    color:#FF933E;
+    font-weight:700;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.history-note{
+    white-space:pre-wrap;
+    line-height:1.7;
+    color:#444;
+    font-size:14px;
+}
+
+.empty-history{
+    text-align:center;
+    color:#999;
+    padding:40px;
+}
+
+/* ====================================
+   SCROLLBAR
+==================================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#FF933E;
+    border-radius:50px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#ff8220;
+}
+
+/* ====================================
+   MOBILE
+==================================== */
+
+@media(max-width:768px){
+
+    body{
+        padding:12px;
+    }
+
+    .container{
+        max-width:100%;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .header{
+        gap:15px;
+    }
+
+    .clock-wrapper{
+        width:100%;
+        justify-content:flex-start;
+        flex-wrap:wrap;
+    }
+
+    .clock-card{
+        flex:1;
+        min-width:130px;
+    }
+
+    .tabs{
+        width:100%;
+    }
+
+    .tab-btn{
+        flex:1;
+    }
+
+    .button-row{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .logo{
+        font-size:26px;
+    }
+}
