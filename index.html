@@ -380,24 +380,62 @@
 
         <!-- HISTORY TAB -->
 
-        <section
-            id="historyTab"
-            class="card hidden">
+      <section
+    id="historyTab"
+    class="card hidden">
 
-            <div id="historyContainer">
+    <div id="historyContainer">
 
-                <div class="empty-history">
-                    No saved case notes yet.
-                </div>
-
-            </div>
-
-        </section>
+        <div class="empty-history">
+            No saved case notes yet.
+        </div>
 
     </div>
 
-    <script src="script.js"></script>
+</section>
 
-</body>
+<!-- S-NOTE TAB -->
 
-</html>
+<section
+    id="sNoteTab"
+    class="card hidden">
+
+    <div class="button-row">
+
+        <button
+            id="copyStandardBtn"
+            class="btn btn-copy">
+
+            Copy Standard Note
+
+        </button>
+
+    </div>
+
+    <div class="standard-template">
+
+<pre id="standardText">Caller's name:
+Relationship to patient/name and Title:
+Medication name:
+Issue/Reason for call:
+Resolution/Outcome:</pre>
+
+    </div>
+
+</section>
+
+<!-- H-NOTE TAB -->
+
+<section
+    id="hNoteTab"
+    class="card hidden">
+
+    <div id="standardHistoryContainer">
+
+        <div class="empty-history">
+            No saved standard notes yet.
+        </div>
+
+    </div>
+
+</section>
