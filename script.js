@@ -5,33 +5,30 @@
 function updateClocks() {
     const now = new Date();
 
+    // Philippines Time
     document.getElementById("phTime").textContent =
-        now.toLocaleTimeString("en-PH", {
+        now.toLocaleTimeString("en-US", {
             timeZone: "Asia/Manila",
             hour: "2-digit",
             minute: "2-digit",
-            second: "2-digit"
+            second: "2-digit",
+            hour12: true
         });
 
-    const easternFormatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/New_York",
-        timeZoneName: "short",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-    });
-
-    const parts = easternFormatter.formatToParts(now);
-    const zone = parts.find(p => p.type === "timeZoneName").value;
-
-    document.getElementById("estTime").textContent =
-        easternFormatter.format(now);
-
-    document.getElementById("usLabel").textContent = zone; // EST or EDT
+    // US Central Time (Automatically CST/CDT)
+    document.getElementById("ctTime").textContent =
+        now.toLocaleTimeString("en-US", {
+            timeZone: "America/Chicago",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        });
 }
 
 updateClocks();
 setInterval(updateClocks, 1000);
+
 
 // ==========================
 // ELEMENTS
