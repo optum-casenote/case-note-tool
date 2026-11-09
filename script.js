@@ -3,17 +3,31 @@
 // ==========================
 
 function updateClocks() {
+    const now = new Date();
 
     document.getElementById("phTime").textContent =
-        new Date().toLocaleTimeString("en-US", {
-            timeZone: "Asia/Manila"
+        now.toLocaleTimeString("en-PH", {
+            timeZone: "Asia/Manila",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
         });
+
+    const easternFormatter = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        timeZoneName: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    const parts = easternFormatter.formatToParts(now);
+    const zone = parts.find(p => p.type === "timeZoneName").value;
 
     document.getElementById("estTime").textContent =
-        new Date().toLocaleTimeString("en-US", {
-            timeZone: "America/New_York"
-        });
+        easternFormatter.format(now);
 
+    document.getElementById("usLabel").textContent = zone; // EST or EDT
 }
 
 updateClocks();
