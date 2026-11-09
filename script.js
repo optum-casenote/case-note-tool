@@ -5,12 +5,12 @@
 function updateClocks() {
     const now = new Date();
 
-    // Philippines Time
    document.addEventListener("DOMContentLoaded", function () {
 
     function updateClocks() {
         const now = new Date();
 
+        // Philippines
         document.getElementById("phTime").textContent =
             now.toLocaleTimeString("en-US", {
                 timeZone: "Asia/Manila",
@@ -20,9 +20,10 @@ function updateClocks() {
                 hour12: true
             });
 
+        // Central Time (CST/CDT)
         document.getElementById("ctTime").textContent =
             now.toLocaleTimeString("en-US", {
-                timeZone: "America/New_York",
+                timeZone: "America/Chicago",
                 hour: "2-digit",
                 minute: "2-digit",
                 second: "2-digit",
