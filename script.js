@@ -6,28 +6,34 @@ function updateClocks() {
     const now = new Date();
 
     // Philippines Time
-    document.getElementById("phTime").textContent =
-        now.toLocaleTimeString("en-US", {
-            timeZone: "Asia/Manila",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: true
-        });
+   document.addEventListener("DOMContentLoaded", function () {
 
-    // US Central Time (Automatically CST/CDT)
-    document.getElementById("ctTime").textContent =
-        now.toLocaleTimeString("en-US", {
-            timeZone: "America/Chicago",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: true
-        });
-}
+    function updateClocks() {
+        const now = new Date();
 
-updateClocks();
-setInterval(updateClocks, 1000);
+        document.getElementById("phTime").textContent =
+            now.toLocaleTimeString("en-US", {
+                timeZone: "Asia/Manila",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+
+        document.getElementById("ctTime").textContent =
+            now.toLocaleTimeString("en-US", {
+                timeZone: "America/Chicago",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
+    }
+
+    updateClocks();
+    setInterval(updateClocks, 1000);
+
+});
 
 
 // ==========================
