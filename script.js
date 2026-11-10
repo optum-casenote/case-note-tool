@@ -2,15 +2,12 @@
 // CLOCKS
 // ==========================
 
-function updateClocks() {
-    const now = new Date();
-
-   document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
     function updateClocks() {
         const now = new Date();
 
-        // Philippines
+        // Philippines Time
         document.getElementById("phTime").textContent =
             now.toLocaleTimeString("en-US", {
                 timeZone: "Asia/Manila",
@@ -20,7 +17,7 @@ function updateClocks() {
                 hour12: true
             });
 
-        // Central Time (CST/CDT)
+        // Central Time (Chicago)
         document.getElementById("ctTime").textContent =
             now.toLocaleTimeString("en-US", {
                 timeZone: "America/Chicago",
@@ -35,7 +32,6 @@ function updateClocks() {
     setInterval(updateClocks, 1000);
 
 });
-
 
 // ==========================
 // ELEMENTS
