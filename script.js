@@ -1,3 +1,4 @@
+
 // ==========================
 // CLOCKS
 // ==========================
@@ -7,35 +8,31 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateClocks() {
         const now = new Date();
 
-        const phTime = document.getElementById("phTime");
-        const ctTime = document.getElementById("ctTime");
+        // Philippines Time
+        document.getElementById("phTime").textContent =
+            now.toLocaleTimeString("en-US", {
+                timeZone: "Asia/Manila",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
 
-        if (!phTime || !ctTime) {
-            console.error("Clock elements not found");
-            return;
-        }
-
-        phTime.textContent = now.toLocaleTimeString("en-US", {
-            timeZone: "Asia/Manila",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: true
-        });
-
-        ctTime.textContent = now.toLocaleTimeString("en-US", {
-            timeZone: "America/Chicago",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: true
-        });
+        // Central Time
+        document.getElementById("ctTime").textContent =
+            now.toLocaleTimeString("en-US", {
+                timeZone: "America/Chicago",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            });
     }
 
     updateClocks();
     setInterval(updateClocks, 1000);
-});
 
+});
 // ==========================
 // ELEMENTS
 // ==========================
