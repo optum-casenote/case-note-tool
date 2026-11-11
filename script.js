@@ -371,35 +371,36 @@ function loadHistory() {
 }
 
 // ==========================
-// CLEAR FORM
+// CLEAR DEL SET
 // ==========================
 
 document.getElementById("clearBtn")
 .addEventListener("click", () => {
 
-    if (!confirm("Clear all fields?")) {
+    if (!confirm("Clear DEL SET fields?")) {
         return;
     }
 
-    document
-        .querySelectorAll("input, textarea")
-        .forEach(el => {
+    document.getElementById("spokeWith").selectedIndex = 0;
+    document.getElementById("callerName").value = "";
+    document.getElementById("otherRelationship").value = "";
+    document.getElementById("mdOfficeHours").value = "";
+    document.getElementById("punr").selectedIndex = 0;
+    document.getElementById("orderNumber").value = "";
+    document.getElementById("deliveryDate").value = "";
+    document.getElementById("copay").value = "";
+    document.getElementById("obeNeeded").selectedIndex = 0;
+    document.getElementById("activeObe").selectedIndex = 0;
+    document.getElementById("medicaid").selectedIndex = 0;
+    document.getElementById("sameAddress").selectedIndex = 0;
+    document.getElementById("sameMd").selectedIndex = 0;
+    document.getElementById("growthHormone").selectedIndex = 0;
+    document.getElementById("restrictedState").selectedIndex = 0;
+    document.getElementById("shippingMethod").selectedIndex = 0;
+    document.getElementById("shippingAddress").value = "";
+    document.getElementById("otherShippingMethod").value = "";
 
-            if (el.type === "checkbox") {
-                el.checked = false;
-            } else {
-                el.value = "";
-            }
-
-        });
-
-    document
-        .querySelectorAll("select")
-        .forEach(el => {
-
-            el.selectedIndex = 0;
-
-        });
+    document.getElementById("attestation").checked = false;
 
     document.getElementById(
         "otherRelationshipContainer"
