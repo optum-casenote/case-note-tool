@@ -531,3 +531,113 @@ document
     document.getElementById("stdResolution").value = "";
 
 });
+
+// ==========================
+// STANDARD NOTE
+// ==========================
+
+const copyStandardBtn =
+    document.getElementById("copyStandardBtn");
+
+if (copyStandardBtn) {
+
+    copyStandardBtn.addEventListener("click", async () => {
+
+        const caller =
+            document.getElementById("stdCaller");
+
+        const relationship =
+            document.getElementById("stdRelationship");
+
+        const medication =
+            document.getElementById("stdMedication");
+
+        const issue =
+            document.getElementById("stdIssue");
+
+        const resolution =
+            document.getElementById("stdResolution");
+
+        if (!caller.value.trim()) {
+            alert("Caller's Name is required.");
+            return;
+        }
+
+        if (!relationship.value.trim()) {
+            alert("Relationship / Title is required.");
+            return;
+        }
+
+        if (!medication.value.trim()) {
+            alert("Medication is required.");
+            return;
+        }
+
+        if (!issue.value.trim()) {
+            alert("Issue / Reason for Call is required.");
+            return;
+        }
+
+        if (!resolution.value.trim()) {
+            alert("Resolution / Outcome is required.");
+            return;
+        }
+
+        const note = `STANDARD CASE NOTE
+
+CALLER'S NAME:
+${caller.value}
+
+RELATIONSHIP TO PATIENT / TITLE:
+${relationship.value}
+
+MEDICATION:
+${medication.value}
+
+ISSUE / REASON FOR CALL:
+${issue.value}
+
+RESOLUTION / OUTCOME:
+${resolution.value}`;
+
+        await navigator.clipboard.writeText(note);
+
+        let history =
+            JSON.parse(
+                localStorage.getItem("caseNotes") || "[]"
+            );
+
+        history.unshift({
+            type: "STANDARD",
+            date: new Date().toLocaleString(),
+            note: note
+        });
+
+        localStorage.setItem(
+            "caseNotes",
+            JSON.stringify(history)
+        );
+
+        alert("Standard note copied and saved.");
+    });
+
+}
+
+// ==========================
+// CLEAR STANDARD
+// ==========================
+
+document
+.getElementById("clearStandardBtn")
+?.addEventListener("click", () => {
+
+    if (!confirm("Clear Standard Note?"))
+        return;
+
+    document.getElementById("stdCaller").value = "";
+    document.getElementById("stdRelationship").value = "";
+    document.getElementById("stdMedication").value = "";
+    document.getElementById("stdIssue").value = "";
+    document.getElementById("stdResolution").value = "";
+
+});
