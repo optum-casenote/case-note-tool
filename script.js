@@ -271,15 +271,18 @@ copyBtn.addEventListener("click", async () => {
     if (restrictedState.value)
         note += `Shipping State CO/ID/MN/NV/RI/WV: ${restrictedState.value}\n`;
 
-    if (shippingMethod.value)
-        note += `Shipping Method: ${shippingMethod.value}\n`;
+   if (
+    shippingMethod.value === "Other" &&
+    otherShippingMethod.value
+) {
+    note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
+}
 
-    if (
-        shippingMethod.value === "Other" &&
-        otherShippingMethod.value
-    ) {
-        note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
-    }
+// Attestation
+note += `\nI attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
+
+// Shipping Reminder
+note += `\nShipping Reminder:\nDeliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
 
     try {
 
