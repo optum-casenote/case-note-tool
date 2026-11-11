@@ -455,4 +455,29 @@ select option{
     margin-bottom:20px;
     color:#333;
     font-size:20px;
+    font-weight:700;
+}
+
+
+/* ====================================
+   HISTORY TYPE BADGES
+==================================== */
+
+.history-type{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:20px;
+    margin:8px 0;
+    font-size:12px;
+    font-weight:600;
+}
+
+.delset-badge{
+    background:#FFE8CC;
+    color:#8A4B00;
+}
+
+.standard-badge{
+    background:#E6F4EA;
+    color:#0A6E31;
 }
