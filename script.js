@@ -641,3 +641,17 @@ document
     document.getElementById("stdResolution").value = "";
 
 });
+
+// ==========================
+// CLEAR FORM
+// ==========================
+
+document.getElementById("clearBtn")
+.addEventListener("click", () => {
+
+
+    const copyStandardBtn =
+    document.getElementById("copyStandardBtn");
+
+
+    
